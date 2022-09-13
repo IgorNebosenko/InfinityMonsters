@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefc718392fb4cc28e199ac1dfada9df, type: 3}
+  m_Name: BoostsConfig
+  m_EditorClassIdentifier: 
+  boostsData:
+  - boostPrefab: {fileID: 110215177939941684, guid: 5c58e668b406cc64482de609c1f6ca66, type: 3}
+    requiredScore: 100
+    percentSpawn: 0.5
+  - boostPrefab: {fileID: 274822923840295146, guid: 39ad8c43f1c86494fa83578804028f37, type: 3}
+    requiredScore: 100
+    percentSpawn: 0.4
+  - boostPrefab: {fileID: 7168971027584000781, guid: 512a11bcea1ac0f428d8740640308c83, type: 3}
+    requiredScore: 170
+    percentSpawn: 0.4
+  - boostPrefab: {fileID: 2688087545912528740, guid: 68940464871b0734dacdd85bb861cdf3, type: 3}
+    requiredScore: 170
+    percentSpawn: 0.35
+  - boostPrefab: {fileID: 8700300036378059149, guid: 495fcc1b01a5205438c996652143d7c5, type: 3}
+    requiredScore: 285
+    percentSpawn: 0.3
+  - boostPrefab: {fileID: 3752981922000548794, guid: 4d801f4bab2cfc04487d95aec46a52a0, type: 3}
+    requiredScore: 285
+    percentSpawn: 0.25
+  - boostPrefab: {fileID: 7599189423609682133, guid: 7fae9d9cfa0460844802d06d89c51c5b, type: 3}
+    requiredScore: 450
+    percentSpawn: 0.25
+  - boostPrefab: {fileID: 110215177939941684, guid: 5c58e668b406cc64482de609c1f6ca66, type: 3}
+    requiredScore: 450
+    percentSpawn: 0.2
+  - boostPrefab: {fileID: 6321552748282534439, guid: d11b15774fdae1c46b545beaa15af1fc, type: 3}
+    requiredScore: 750
+    percentSpawn: 0.2
+  - boostPrefab: {fileID: 8445076551125477285, guid: 48c4f390926062243ac517e66190da3f, type: 3}
+    requiredScore: 750
+    percentSpawn: 0.15
+  scoreSpawnBoostsData:
+  - requiredScore: 100
+    countItems: 1
+  - requiredScore: 170
+    countItems: 2
+  - requiredScore: 450
+    countItems: 3
+  - requiredScore: 750
+    countItems: 4

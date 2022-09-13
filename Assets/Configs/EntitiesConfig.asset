@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f7731a1a60497f92a409ae349ed10b, type: 3}
+  m_Name: EntitiesConfig
+  m_EditorClassIdentifier: 
+  botsData:
+  - entityData:
+      speed: 2
+      mass: 5
+    botEntityPrefab: {fileID: 4752394776149196745, guid: 06f5cb5617e1692458fa16e9b2df70b7, type: 3}
+    requiredScore: 0
+    weightForSpawn: 50
+    minScoreForDestroy: 3
+    maxScoreForDestroy: 7
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 5
+      mass: 8
+    botEntityPrefab: {fileID: 945526805032643623, guid: 91f2463c7c2ebac4ea6e011a86cd43b1, type: 3}
+    requiredScore: 150
+    weightForSpawn: 75
+    minScoreForDestroy: 5
+    maxScoreForDestroy: 9
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 4
+      mass: 12
+    botEntityPrefab: {fileID: 318602540957447676, guid: d0240e7d4f816444492bac867236bb1e, type: 3}
+    requiredScore: 150
+    weightForSpawn: 70
+    minScoreForDestroy: 5
+    maxScoreForDestroy: 9
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 9
+      mass: 12
+    botEntityPrefab: {fileID: 8761479786489150858, guid: 42f95668f23c7064d8787ecc6ba64b14, type: 3}
+    requiredScore: 500
+    weightForSpawn: 100
+    minScoreForDestroy: 11
+    maxScoreForDestroy: 17
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 8
+      mass: 19
+    botEntityPrefab: {fileID: 1202680476806885373, guid: 5fb2f498c8514934495e686166d48742, type: 3}
+    requiredScore: 500
+    weightForSpawn: 100
+    minScoreForDestroy: 11
+    maxScoreForDestroy: 17
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 15
+      mass: 25
+    botEntityPrefab: {fileID: 5842725815312515308, guid: 8bfd02fcd94ce8448a46b7b29292458d, type: 3}
+    requiredScore: 1000
+    weightForSpawn: 65
+    minScoreForDestroy: 19
+    maxScoreForDestroy: 31
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 14
+      mass: 45
+    botEntityPrefab: {fileID: 2188945677037283828, guid: 8ad51fa3d941e624f860056739abb286, type: 3}
+    requiredScore: 1000
+    weightForSpawn: 50
+    minScoreForDestroy: 21
+    maxScoreForDestroy: 34
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  scoreSpawnBotsData:
+  - requiredScore: 0
+    countItems: 3
+  - requiredScore: 50
+    countItems: 4
+  - requiredScore: 150
+    countItems: 5
+  - requiredScore: 350
+    countItems: 6
+  - requiredScore: 750
+    countItems: 7
+  - requiredScore: 1200
+    countItems: 9
+  - requiredScore: 2000
+    countItems: 11
+  - requiredScore: 3250
+    countItems: 13
+  positionsConfig: {fileID: 11400000, guid: d66afc32d5981504192efbe87508207b, type: 2}
+  playerData:
+    entityData:
+      speed: 3
+      mass: 10
+    playerEntityPrefab: {fileID: 2609377481242851312, guid: 5b7a7cac11257fb48924b65968f91fe6, type: 3}
+    projectileData:
+      cooldown: 0.75
+      mass: 2
+      projectileForce: 50
