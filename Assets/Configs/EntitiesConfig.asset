@@ -79,20 +79,22 @@ MonoBehaviour:
   scoreSpawnBotsData:
   - requiredScore: 0
     countItems: 3
-  - requiredScore: 50
+  - requiredScore: 500
     countItems: 4
-  - requiredScore: 150
+  - requiredScore: 1500
     countItems: 5
-  - requiredScore: 350
+  - requiredScore: 3000
     countItems: 6
-  - requiredScore: 750
+  - requiredScore: 5000
     countItems: 7
-  - requiredScore: 1200
+  - requiredScore: 10000
     countItems: 8
-  - requiredScore: 2000
+  - requiredScore: 25000
+    countItems: 9
+  - requiredScore: 50000
     countItems: 10
-  - requiredScore: 3250
-    countItems: 12
+  - requiredScore: 10000
+    countItems: 11
   positionsConfig: {fileID: 11400000, guid: d66afc32d5981504192efbe87508207b, type: 2}
   playerData:
     entityData:
@@ -100,6 +102,6 @@ MonoBehaviour:
       mass: 10
     playerEntityPrefab: {fileID: 2609377481242851312, guid: 5b7a7cac11257fb48924b65968f91fe6, type: 3}
     projectileData:
-      cooldown: 0.75
-      mass: 2
-      projectileForce: 50
+      cooldown: 0.5
+      mass: 5
+      projectileForce: 100

@@ -11,7 +11,7 @@ namespace IM.UI.Game
         [SerializeField] private TMP_Text textHighScore;
         [SerializeField] private TMP_Text textSore;
         [SerializeField] private Button buttonPause;
-        [SerializeField] private Button buttonShoot;
+        [SerializeField] private ButtonShoot buttonShoot;
         [SerializeField] private TMP_Text cooldownText;
 
         [SerializeField] private GameStats gameStats;
@@ -29,14 +29,14 @@ namespace IM.UI.Game
         {
             buttonPause.onClick.AddListener(_controller.OnButtonPauseClicked);
             gameStats.OnScoreChanged += SetScoreText;
-            buttonShoot.onClick.AddListener(OnButtonShootClicked);
+            buttonShoot.OnHoldButton += OnButtonShootHolded;
         }
 
         private void OnDisable()
         {
             buttonPause.onClick.AddListener(_controller.OnButtonPauseClicked);
             gameStats.OnScoreChanged -= SetScoreText;
-            buttonShoot.onClick.RemoveListener(OnButtonShootClicked);
+            buttonShoot.OnHoldButton -= OnButtonShootHolded;
         }
 
         private void Start()
@@ -49,7 +49,7 @@ namespace IM.UI.Game
             textSore.text = $"Score: {val}";
         }
 
-        private void OnButtonShootClicked()
+        private void OnButtonShootHolded()
         {
             OnButtonShootPressed?.Invoke();
         }

@@ -315,7 +315,7 @@ MonoBehaviour:
   textHighScore: {fileID: 709603560}
   textSore: {fileID: 2137953169}
   buttonPause: {fileID: 228352303}
-  buttonShoot: {fileID: 451179180}
+  buttonShoot: {fileID: 451179183}
   cooldownText: {fileID: 144962681}
   gameStats: {fileID: 754968231}
 --- !u!1 &144962679
@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 451179182}
   - component: {fileID: 451179181}
   - component: {fileID: 451179180}
+  - component: {fileID: 451179183}
   m_Layer: 5
   m_Name: ButtonShoot
   m_TagString: Untagged
@@ -1002,6 +1003,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451179178}
   m_CullTransparentMesh: 1
+--- !u!114 &451179183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451179178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af3fa4ef590479da5e0b5908b111c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 451179180}
+  buttonText: {fileID: 1979651491}
+  OnHoldedText: 'AutoShoot: On'
+  OnHoldTextOff: 'AutoShoot: Off'
 --- !u!1 &463041547
 GameObject:
   m_ObjectHideFlags: 0
