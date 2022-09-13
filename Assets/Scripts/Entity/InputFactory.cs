@@ -9,7 +9,7 @@ namespace IM.Entity
             return new PlayerInput();
         }
 
-        public IInput GetBotInput(IHavePosition playerPos)
+        public IInput GetBotInput(IHaveTransform playerPos)
         {
             return new BotInput(playerPos);
         }

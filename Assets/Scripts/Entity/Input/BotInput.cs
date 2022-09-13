@@ -4,21 +4,18 @@ namespace IM.Entity.Input
 {
     public class BotInput : IInput
     {
-        private IHavePosition _player;
+        private IHaveTransform _player;
 
-        public BotInput(IHavePosition player)
+        public BotInput(IHaveTransform player)
         {
             _player = player;
         }
         
         public void OnFixedUpdate(Rigidbody rigidbody, float speed)
         {
-            /*var direction = Vector3.Angle(rigidbody.transform.position, _player.Position);
-            
-            Debug.Log(direction);*/
-
-            /*direction *= speed * Time.fixedTime;
-            rigidbody.MovePosition(rigidbody.transform.position + direction);*/
+            var transform = rigidbody.transform;
+            transform.LookAt(_player.EntityTransform);
+            rigidbody.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
         }
     }
 }

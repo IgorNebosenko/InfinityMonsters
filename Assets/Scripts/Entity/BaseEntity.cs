@@ -9,9 +9,9 @@ namespace IM.Entity
     {
         [SerializeField] private Rigidbody physicModel;
 
-        protected float speed;
-        protected float mass;
-        protected IInput input;
+        private float speed;
+        private float mass;
+        private IInput input;
 
         private const float MinSpeed = 0.5f;
         private const float MinEntityMass = 0.25f;

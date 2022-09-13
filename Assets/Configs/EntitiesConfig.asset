@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botsData:
   - entityData:
-      speed: 2
+      speed: 0.5
       mass: 5
     botEntityPrefab: {fileID: 4752394776149196745, guid: 06f5cb5617e1692458fa16e9b2df70b7, type: 3}
     requiredScore: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
     maxScoreForDestroy: 7
     spawnPosition: {x: 2, y: 0.6, z: 2}
   - entityData:
-      speed: 5
+      speed: 2.5
       mass: 8
     botEntityPrefab: {fileID: 945526805032643623, guid: 91f2463c7c2ebac4ea6e011a86cd43b1, type: 3}
     requiredScore: 50
@@ -32,7 +32,7 @@ MonoBehaviour:
     maxScoreForDestroy: 9
     spawnPosition: {x: 2, y: 0.6, z: 2}
   - entityData:
-      speed: 4
+      speed: 1.75
       mass: 12
     botEntityPrefab: {fileID: 318602540957447676, guid: d0240e7d4f816444492bac867236bb1e, type: 3}
     requiredScore: 85
@@ -41,7 +41,7 @@ MonoBehaviour:
     maxScoreForDestroy: 9
     spawnPosition: {x: 2, y: 0.6, z: 2}
   - entityData:
-      speed: 9
+      speed: 2.75
       mass: 12
     botEntityPrefab: {fileID: 8761479786489150858, guid: 42f95668f23c7064d8787ecc6ba64b14, type: 3}
     requiredScore: 200
@@ -50,7 +50,7 @@ MonoBehaviour:
     maxScoreForDestroy: 17
     spawnPosition: {x: 2, y: 0.6, z: 2}
   - entityData:
-      speed: 8
+      speed: 1.75
       mass: 19
     botEntityPrefab: {fileID: 1202680476806885373, guid: 5fb2f498c8514934495e686166d48742, type: 3}
     requiredScore: 300
@@ -59,8 +59,8 @@ MonoBehaviour:
     maxScoreForDestroy: 17
     spawnPosition: {x: 2, y: 0.6, z: 2}
   - entityData:
-      speed: 15
-      mass: 25
+      speed: 3
+      mass: 5
     botEntityPrefab: {fileID: 5842725815312515308, guid: 8bfd02fcd94ce8448a46b7b29292458d, type: 3}
     requiredScore: 650
     weightForSpawn: 65
@@ -68,7 +68,7 @@ MonoBehaviour:
     maxScoreForDestroy: 31
     spawnPosition: {x: 2, y: 0.6, z: 2}
   - entityData:
-      speed: 14
+      speed: 0.5
       mass: 45
     botEntityPrefab: {fileID: 2188945677037283828, guid: 8ad51fa3d941e624f860056739abb286, type: 3}
     requiredScore: 800

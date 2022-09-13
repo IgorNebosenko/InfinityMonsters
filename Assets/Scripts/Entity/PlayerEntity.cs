@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace IM.Entity
 {
-    public class PlayerEntity : BaseEntity, IHavePosition
+    public class PlayerEntity : BaseEntity, IHaveTransform
     {
         [SerializeField] private PlayerGun playerGun;
 
@@ -35,6 +35,6 @@ namespace IM.Entity
             GameUiReferences.Instance.RespawnPopup.gameObject.SetActive(true);
         }
 
-        public Vector3 Position => transform.position;
+        public Transform EntityTransform => transform;
     }
 }

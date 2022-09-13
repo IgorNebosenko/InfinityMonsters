@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicModel: {fileID: 6094636209062160245}
-  characterController: {fileID: 0}
 --- !u!1 &6293646763040817607
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6293646763040817607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.276, z: -0.477}
+  m_LocalPosition: {x: 0, y: -0.276, z: 0.477}
   m_LocalScale: {x: 0.65, y: 0.05, z: 0.2}
   m_Children: []
   m_Father: {fileID: 8359104746155231810}
@@ -237,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6917508418083466222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.248, y: 0.147, z: -0.477}
+  m_LocalPosition: {x: 0.248, y: 0.147, z: 0.477}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 8359104746155231810}
@@ -318,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7346954121457819919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.248, y: 0.147, z: -0.477}
+  m_LocalPosition: {x: -0.248, y: 0.147, z: 0.477}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 8359104746155231810}
