@@ -10,7 +10,7 @@ namespace IM.Boosts
         public void BoostCollected(PlayerEntity player)
         {
             OnBoostCollected(player);
-            Destroy(gameObject); //бусты не деспавнятся, много раз применются
+            Destroy(gameObject);
         }
     }
 }

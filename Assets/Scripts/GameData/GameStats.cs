@@ -38,7 +38,10 @@ namespace IM.GameData
         public void EndGame()
         {
             if (CurrentScore > HighScore)
+            {
+                HighScore = CurrentScore;
                 PlayerPrefs.SetInt(HighScorePath, HighScore);
+            }
 
             IsGameContinues = false;
         }

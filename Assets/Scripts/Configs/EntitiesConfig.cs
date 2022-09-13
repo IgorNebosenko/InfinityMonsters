@@ -56,8 +56,8 @@ namespace IM.Configs
             var sumWeight = 0f;
             for (var i = 0; i < possibleVariants.Length; i++)
             {
-                if (sumWeight > requiredWeight &&
-                    sumWeight + possibleVariants[i].weightForSpawn <= requiredWeight)
+                if (sumWeight < requiredWeight &&
+                    sumWeight + possibleVariants[i].weightForSpawn >= requiredWeight)
                     return possibleVariants[i];
 
                 sumWeight += possibleVariants[i].weightForSpawn;

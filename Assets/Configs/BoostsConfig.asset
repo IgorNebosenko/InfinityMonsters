@@ -14,41 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostsData:
   - boostPrefab: {fileID: 110215177939941684, guid: 5c58e668b406cc64482de609c1f6ca66, type: 3}
-    requiredScore: 100
+    requiredScore: 25
     percentSpawn: 0.5
   - boostPrefab: {fileID: 274822923840295146, guid: 39ad8c43f1c86494fa83578804028f37, type: 3}
-    requiredScore: 100
+    requiredScore: 25
     percentSpawn: 0.4
   - boostPrefab: {fileID: 7168971027584000781, guid: 512a11bcea1ac0f428d8740640308c83, type: 3}
-    requiredScore: 170
+    requiredScore: 65
     percentSpawn: 0.4
   - boostPrefab: {fileID: 2688087545912528740, guid: 68940464871b0734dacdd85bb861cdf3, type: 3}
-    requiredScore: 170
+    requiredScore: 65
     percentSpawn: 0.35
   - boostPrefab: {fileID: 8700300036378059149, guid: 495fcc1b01a5205438c996652143d7c5, type: 3}
-    requiredScore: 285
+    requiredScore: 110
     percentSpawn: 0.3
   - boostPrefab: {fileID: 3752981922000548794, guid: 4d801f4bab2cfc04487d95aec46a52a0, type: 3}
-    requiredScore: 285
+    requiredScore: 110
     percentSpawn: 0.25
   - boostPrefab: {fileID: 7599189423609682133, guid: 7fae9d9cfa0460844802d06d89c51c5b, type: 3}
-    requiredScore: 450
+    requiredScore: 265
     percentSpawn: 0.25
   - boostPrefab: {fileID: 110215177939941684, guid: 5c58e668b406cc64482de609c1f6ca66, type: 3}
-    requiredScore: 450
+    requiredScore: 265
     percentSpawn: 0.2
   - boostPrefab: {fileID: 6321552748282534439, guid: d11b15774fdae1c46b545beaa15af1fc, type: 3}
-    requiredScore: 750
+    requiredScore: 500
     percentSpawn: 0.2
   - boostPrefab: {fileID: 8445076551125477285, guid: 48c4f390926062243ac517e66190da3f, type: 3}
-    requiredScore: 750
+    requiredScore: 500
     percentSpawn: 0.15
   scoreSpawnBoostsData:
-  - requiredScore: 100
+  - requiredScore: 25
     countItems: 1
-  - requiredScore: 170
+  - requiredScore: 50
     countItems: 2
-  - requiredScore: 450
+  - requiredScore: 85
     countItems: 3
-  - requiredScore: 750
+  - requiredScore: 150
     countItems: 4
+  - requiredScore: 350
+    countItems: 5
+  - requiredScore: 750
+    countItems: 6

@@ -26,7 +26,7 @@ MonoBehaviour:
       speed: 5
       mass: 8
     botEntityPrefab: {fileID: 945526805032643623, guid: 91f2463c7c2ebac4ea6e011a86cd43b1, type: 3}
-    requiredScore: 150
+    requiredScore: 50
     weightForSpawn: 75
     minScoreForDestroy: 5
     maxScoreForDestroy: 9
@@ -35,7 +35,7 @@ MonoBehaviour:
       speed: 4
       mass: 12
     botEntityPrefab: {fileID: 318602540957447676, guid: d0240e7d4f816444492bac867236bb1e, type: 3}
-    requiredScore: 150
+    requiredScore: 85
     weightForSpawn: 70
     minScoreForDestroy: 5
     maxScoreForDestroy: 9
@@ -44,7 +44,7 @@ MonoBehaviour:
       speed: 9
       mass: 12
     botEntityPrefab: {fileID: 8761479786489150858, guid: 42f95668f23c7064d8787ecc6ba64b14, type: 3}
-    requiredScore: 500
+    requiredScore: 200
     weightForSpawn: 100
     minScoreForDestroy: 11
     maxScoreForDestroy: 17
@@ -53,7 +53,7 @@ MonoBehaviour:
       speed: 8
       mass: 19
     botEntityPrefab: {fileID: 1202680476806885373, guid: 5fb2f498c8514934495e686166d48742, type: 3}
-    requiredScore: 500
+    requiredScore: 300
     weightForSpawn: 100
     minScoreForDestroy: 11
     maxScoreForDestroy: 17
@@ -62,7 +62,7 @@ MonoBehaviour:
       speed: 15
       mass: 25
     botEntityPrefab: {fileID: 5842725815312515308, guid: 8bfd02fcd94ce8448a46b7b29292458d, type: 3}
-    requiredScore: 1000
+    requiredScore: 650
     weightForSpawn: 65
     minScoreForDestroy: 19
     maxScoreForDestroy: 31
@@ -71,7 +71,7 @@ MonoBehaviour:
       speed: 14
       mass: 45
     botEntityPrefab: {fileID: 2188945677037283828, guid: 8ad51fa3d941e624f860056739abb286, type: 3}
-    requiredScore: 1000
+    requiredScore: 800
     weightForSpawn: 50
     minScoreForDestroy: 21
     maxScoreForDestroy: 34
@@ -88,11 +88,11 @@ MonoBehaviour:
   - requiredScore: 750
     countItems: 7
   - requiredScore: 1200
-    countItems: 9
+    countItems: 8
   - requiredScore: 2000
-    countItems: 11
+    countItems: 10
   - requiredScore: 3250
-    countItems: 13
+    countItems: 12
   positionsConfig: {fileID: 11400000, guid: d66afc32d5981504192efbe87508207b, type: 2}
   playerData:
     entityData:
