@@ -1,4 +1,5 @@
 using System;
+using IM.GoogleServices;
 using UnityEngine;
 
 namespace IM.GameData
@@ -41,6 +42,7 @@ namespace IM.GameData
             {
                 HighScore = CurrentScore;
                 PlayerPrefs.SetInt(HighScorePath, HighScore);
+                GooglePlayServicesHandler.Instance.UpdateHighScore(HighScore);
             }
 
             IsGameContinues = false;
