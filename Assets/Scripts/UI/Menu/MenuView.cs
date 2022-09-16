@@ -11,6 +11,7 @@ namespace IM.UI.Menu
         [SerializeField] private TMP_Text textHighScore;
         [SerializeField] private Button buttonPlay;
         [SerializeField] private Button buttonNoAds;
+        [SerializeField] private Button buttonLeaderBoard;
         
         private MenuPresenter _presenter;
 
@@ -25,12 +26,14 @@ namespace IM.UI.Menu
             
             buttonPlay.onClick.AddListener(_presenter.OnButtonPlayPressed);
             buttonNoAds.onClick.AddListener(_presenter.OnButtonNoAdsPressed);
+            buttonLeaderBoard.onClick.AddListener(_presenter.OnButtonLeaderBoardClicked);
         }
 
         private void OnDisable()
         {
             buttonPlay.onClick.RemoveListener(_presenter.OnButtonPlayPressed);
             buttonNoAds.onClick.RemoveListener(_presenter.OnButtonNoAdsPressed);
+            buttonLeaderBoard.onClick.RemoveListener(_presenter.OnButtonLeaderBoardClicked);
         }
     }
 }

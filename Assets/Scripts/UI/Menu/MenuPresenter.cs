@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace IM.UI.Menu
@@ -20,6 +21,11 @@ namespace IM.UI.Menu
         public void OnButtonNoAdsPressed()
         {
             throw new NotImplementedException();
+        }
+
+        public void OnButtonLeaderBoardClicked()
+        {
+            Social.ShowLeaderboardUI();
         }
     }
 }
