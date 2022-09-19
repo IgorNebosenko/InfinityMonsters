@@ -3,7 +3,7 @@ using Firebase.Analytics;
 using Firebase.Extensions;
 using UnityEngine;
 
-namespace IM.Firebase
+namespace IM.Analytics
 {
     public class FirebaseInitializer : MonoBehaviour
     {
