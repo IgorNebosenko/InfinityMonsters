@@ -4,9 +4,9 @@
     {
         public override string Key => "player_start_game";
 
-        public PlayerStartGameEvent(int numberAtSession)
+        public PlayerStartGameEvent(int numberGame)
         {
-            Data.Add("numberAtSession", numberAtSession);
+            Data.Add("number_game", numberGame);
         }
     }
 }
