@@ -1,8 +1,11 @@
-﻿namespace IM.Analytics
+﻿using IM.Analytics.Events;
+
+namespace IM.Analytics
 {
     public interface IAnalyticsProvider
     {
-        void Init();
-        void SendEvent();
+        bool Ready { get; }
+        void Init(bool enableLogs);
+        void SendEvent(AnalyticsEvent analyticsEvent);
     }
 }

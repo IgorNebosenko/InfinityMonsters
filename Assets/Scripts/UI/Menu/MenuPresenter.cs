@@ -1,4 +1,6 @@
 ﻿using System;
+using IM.Analytics;
+using IM.Analytics.Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,11 +22,13 @@ namespace IM.UI.Menu
 
         public void OnButtonNoAdsPressed()
         {
+            AnalyticsManager.SendEvent(new NoAdsButtonEvent(false)); //ToDo implement it!
             throw new NotImplementedException();
         }
 
         public void OnButtonLeaderBoardClicked()
         {
+            AnalyticsManager.SendEvent(new LeaderboardShowEvent());
             Social.ShowLeaderboardUI();
         }
     }

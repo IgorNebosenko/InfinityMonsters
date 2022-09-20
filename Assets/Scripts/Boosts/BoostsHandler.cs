@@ -1,4 +1,6 @@
-﻿using IM.Entity;
+﻿using IM.Analytics;
+using IM.Analytics.Events;
+using IM.Entity;
 using UnityEngine;
 
 namespace IM.Boosts
@@ -10,7 +12,10 @@ namespace IM.Boosts
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(typeof(BoostBase), out var boost))
-                ((BoostBase)boost).BoostCollected(player);
+            {
+                AnalyticsManager.SendEvent(new CollectBoostEvent(boost.GetType().Name));
+                ((BoostBase) boost).BoostCollected(player);
+            }
         }
     }
 }

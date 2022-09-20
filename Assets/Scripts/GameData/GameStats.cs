@@ -1,4 +1,6 @@
 using System;
+using IM.Analytics;
+using IM.Analytics.Events;
 using IM.GoogleServices;
 using UnityEngine;
 
@@ -14,14 +16,21 @@ namespace IM.GameData
         public bool IsGameContinues { get; private set; } = true;
         public bool CanRespawn { get; private set; } = true;
 
+        public static int NumberOfGame;
+
         public static GameStats Instance { get; private set; }
 
+        private AchievementsHandler _achievementsHandler;
+
         public event Action<int> OnScoreChanged;
+        public event Action OnReset;
 
         private void Awake()
         {
             if (Instance == null)
                 Instance = this;
+
+            _achievementsHandler = new AchievementsHandler(this);
 
             Time.timeScale = 1;
         }
@@ -36,6 +45,14 @@ namespace IM.GameData
             Instance = null;
         }
 
+        public void StartGame()
+        {
+            CurrentScore = 0;
+
+            IsGameContinues = true;
+            AnalyticsManager.SendEvent(new PlayerStartGameEvent(NumberOfGame));
+        }
+
         public void EndGame()
         {
             if (CurrentScore > HighScore)
@@ -44,15 +61,17 @@ namespace IM.GameData
                 PlayerPrefs.SetInt(HighScorePath, HighScore);
                 GooglePlayServicesHandler.Instance.UpdateHighScore(HighScore);
             }
+            AnalyticsManager.SendEvent(new GameEndEvent(CanRespawn, CurrentScore));
 
             IsGameContinues = false;
+            NumberOfGame++;
         }
 
         public void RestartGame()
         {
-            CurrentScore = 0;
-
-            IsGameContinues = true;
+            NumberOfGame++;
+            OnReset?.Invoke();
+            StartGame();
         }
 
         public void UpdateCurrentScore(int val)
@@ -61,6 +80,7 @@ namespace IM.GameData
                 return;
             
             CurrentScore += val;
+
             OnScoreChanged?.Invoke(CurrentScore);
         }
     }

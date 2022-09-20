@@ -1,4 +1,6 @@
 ﻿using System;
+using IM.Analytics;
+using IM.Analytics.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,6 +44,7 @@ namespace IM.UI.Game
         private void ButtonHoldStatusChange()
         {
             _isHolded = !_isHolded;
+            AnalyticsManager.SendEvent(new GameAimEvent(_isHolded));
             SetButtonText();
         }
 

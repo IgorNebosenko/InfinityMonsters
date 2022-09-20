@@ -1,4 +1,3 @@
-using System;
 using IM.GameData;
 using TMPro;
 using UnityEngine;

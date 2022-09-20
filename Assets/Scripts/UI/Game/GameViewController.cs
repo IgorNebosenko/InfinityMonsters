@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using IM.Analytics;
+using IM.Analytics.Events;
+using UnityEngine;
 
 namespace IM.UI.Game
 {
@@ -16,6 +18,7 @@ namespace IM.UI.Game
         public void OnButtonPauseClicked()
         {
             _isPauseActive = !_isPauseActive;
+            AnalyticsManager.SendEvent(new GamePauseEvent(_isPauseActive));
 
             Time.timeScale = _isPauseActive ? 0f : 1f;
         }
