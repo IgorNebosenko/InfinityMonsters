@@ -12,7 +12,6 @@ namespace IM.UI.Game
         [SerializeField] private TMP_Text textSore;
         [SerializeField] private Button buttonPause;
         [SerializeField] private ButtonShoot buttonShoot;
-        [SerializeField] private TMP_Text cooldownText;
 
         [SerializeField] private GameStats gameStats;
         
@@ -52,14 +51,6 @@ namespace IM.UI.Game
         private void OnButtonShootHolded()
         {
             OnButtonShootPressed?.Invoke();
-        }
-
-        public void SetCoolDown(float value)
-        {
-            if (value <= 0)
-                cooldownText.text = "Ready!";
-            else
-                cooldownText.text = $"Cooldown : {value:0.0} s";
         }
     }
 }

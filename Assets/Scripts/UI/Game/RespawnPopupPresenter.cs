@@ -19,12 +19,14 @@ namespace IM.UI.Game
         {
             AnalyticsManager.SendEvent(new AfterGameEndFlowEvent(true));
             AdsManager.TryShowRewardedAd(RespawnCallback);
+            _popup.gameObject.SetActive(false);
         }
 
         public void OnRestartPressed()
         {
             AnalyticsManager.SendEvent(new AfterGameEndFlowEvent(false));
-            GameStats.Instance.EndGame();
+            GameStats.Instance.RestartGame();
+            _popup.gameObject.SetActive(false);
         }
 
         public void OnToMenuPressed()

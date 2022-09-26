@@ -15,11 +15,19 @@ namespace IM.Entity
         private InputFactory _inputFactory;
 
         private PlayerEntity _player;
+        private Vector3 _lastPosition;
+
+        private static readonly Vector3 HeightModifierPlayer = new Vector3(0f, 0.6f, 0f);
 
         private void Awake()
         {
             _inputFactory = new InputFactory();
-            _player = Instantiate(entitiesConfig.PlayerData.playerEntityPrefab, new Vector3(0, 0.6f, 0),
+            CreatePlayer();
+        }
+
+        private void CreatePlayer()
+        {
+            _player = Instantiate(entitiesConfig.PlayerData.playerEntityPrefab, Vector3.zero + HeightModifierPlayer, 
                 Quaternion.identity, transform);
             _player.Init(entitiesConfig.PlayerData.entityData, _inputFactory.GetPlayerInput());
             _player.SetPlayerData(entitiesConfig.PlayerData.projectileData);
@@ -28,15 +36,22 @@ namespace IM.Entity
         private void OnEnable()
         {
             platformGenerator.OnPlatformSpawned += GenerateBots;
+
+            GameStats.Instance.OnRespawn += PlayerRespawn;
+            GameStats.Instance.OnReset += GameRestart;
         }
 
         private void OnDisable()
         {
             platformGenerator.OnPlatformSpawned += GenerateBots;
+            
+            GameStats.Instance.OnRespawn -= PlayerRespawn;
+            GameStats.Instance.OnReset -= GameRestart;
         }
 
         private void GenerateBots(Vector3 position)
         {
+            _lastPosition = position;
             var config = entitiesConfig.GetBotsDataForSpawn(GameStats.Instance.CurrentScore);
 
             for (var i = 0; i < config.Length; i++)
@@ -52,6 +67,17 @@ namespace IM.Entity
         private Quaternion GetRandomEntityRotation()
         {
             return new Quaternion(0, Random.Range(-1f, 1f), 0, 1);
+        }
+
+        private void PlayerRespawn()
+        {
+            _player.transform.position = _lastPosition + HeightModifierPlayer;
+        }
+
+        private void GameRestart()
+        {
+            Destroy(_player.gameObject);
+            CreatePlayer();
         }
     }
 }

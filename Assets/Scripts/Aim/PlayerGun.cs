@@ -54,8 +54,6 @@ namespace IM.Aim
         {
             if (_timePassed < _projectileData.cooldown)
                 _timePassed += Time.fixedDeltaTime;
-            
-            _gameView.SetCoolDown(_projectileData.cooldown - _timePassed);
         }
 
         private void TryShoot()

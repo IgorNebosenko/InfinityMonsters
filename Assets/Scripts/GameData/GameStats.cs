@@ -10,7 +10,7 @@ namespace IM.GameData
     public class GameStats : MonoBehaviour
     {
         public const string HighScorePath = "High Score";
-        private const int CountGamesBetweenAds = 5;
+        private const int CountGamesBetweenAds = 3;
         
         public int HighScore { get; private set; }
         public int CurrentScore { get; private set; }
@@ -18,7 +18,7 @@ namespace IM.GameData
         public bool IsGameContinues { get; private set; } = true;
         public bool CanRespawn { get; private set; } = true;
 
-        public static int NumberOfGame;
+        public static int NumberOfGame = 1;
 
         public static GameStats Instance { get; private set; }
 
@@ -31,33 +31,28 @@ namespace IM.GameData
 
         private void Awake()
         {
-            if (Instance == null)
-                Instance = this;
-
+            Instance = this;
+            HighScore = PlayerPrefs.GetInt(HighScorePath, 0);
             _achievementsHandler = new AchievementsHandler(this);
 
             Time.timeScale = 1;
         }
 
-        private void Start()
-        {
-            HighScore = PlayerPrefs.GetInt(HighScorePath, 0);
-        }
-
-        private void OnDestroy()
-        {
-            Instance = null;
-        }
-
         public void StartGame()
         {
-            CurrentScore = 0;
-
             IsGameContinues = true;
             AnalyticsManager.SendEvent(new PlayerStartGameEvent(NumberOfGame));
         }
 
-        public void EndGame()
+        public void RespawnPlayer()
+        {
+            Time.timeScale = 1;
+            CanRespawn = false;
+            OnRespawn?.Invoke();
+            StartGame();
+        }
+
+        public void RestartGame()
         {
             if (CurrentScore > HighScore)
             {
@@ -66,24 +61,19 @@ namespace IM.GameData
                 GooglePlayServicesHandler.Instance.UpdateHighScore(HighScore);
             }
             AnalyticsManager.SendEvent(new GameEndEvent(CanRespawn, CurrentScore));
-
-            IsGameContinues = false;
-        }
-
-        public void RespawnPlayer()
-        {
-            OnRespawn?.Invoke();
-            StartGame();
-        }
-
-        public void RestartGame()
-        {
+            
             NumberOfGame++;
+            Time.timeScale = 1;
 
-            if (NumberOfGame > 0 && NumberOfGame % CountGamesBetweenAds == 0)
+            if (NumberOfGame % CountGamesBetweenAds == 0)
+            {
                 AnalyticsManager.SendEvent(new InterstitialAdViewEvent(AdsManager.TryShowInterstitialAd()));
+            }
 
-
+            CurrentScore = 0;
+            OnScoreChanged?.Invoke(0);
+            CanRespawn = true;
+            
             OnReset?.Invoke();
             StartGame();
         }

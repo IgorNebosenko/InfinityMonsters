@@ -31,7 +31,7 @@ namespace IM.Ads
 
         public void ShowInterstitialAd()
         {
-            Advertisement.Show(InterstitialAdId);
+            Advertisement.Show(InterstitialAdId, this);
         }
 
         public void ShowRewardedAd(Action<AdsCallbackStatus> onComplete)

@@ -26,11 +26,13 @@ namespace IM.Boosts
         private void OnEnable()
         {
             platformGenerator.OnPlatformSpawned += SpawnBoosts;
+            GameStats.Instance.OnReset += DestroyAllBoosts;
         }
 
         private void OnDisable()
         {
             platformGenerator.OnPlatformSpawned -= SpawnBoosts;
+            GameStats.Instance.OnReset -= DestroyAllBoosts;
         }
 
         private void SpawnBoosts(Vector3 position)
@@ -60,6 +62,17 @@ namespace IM.Boosts
         private float GetRandomPosition()
         {
             return Random.Range(platformGenerator.PlatformSize * -1, platformGenerator.PlatformSize);
+        }
+
+        private void DestroyAllBoosts()
+        {
+            foreach (var child in _listOldBoosts)
+            {
+                if (child != null)
+                    Destroy(child.gameObject);
+            }
+            _listOldBoosts.Clear();
+            _listNewBoosts.Clear();
         }
     }
 }

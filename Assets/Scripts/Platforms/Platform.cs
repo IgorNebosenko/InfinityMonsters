@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using IM.GameData;
+using UnityEngine;
 
 namespace IM.Platforms
 {
@@ -10,6 +11,18 @@ namespace IM.Platforms
 
         private bool _isUpdateInterrupted;
 
+        private void OnEnable()
+        {
+            GameStats.Instance.OnRespawn += ForceDestroy;
+            GameStats.Instance.OnReset += ForceDestroy;
+        }
+
+        private void OnDisable()
+        {
+            GameStats.Instance.OnRespawn -= ForceDestroy;
+            GameStats.Instance.OnReset -= ForceDestroy;
+        }
+
         private void Update()
         {
             if (_isUpdateInterrupted)
@@ -20,9 +33,14 @@ namespace IM.Platforms
 
             if (platformLiveTime <= 0)
             {
-                Destroy(platform);
-                _isUpdateInterrupted = true;
+                ForceDestroy();
             }
+        }
+
+        private void ForceDestroy()
+        {
+            Destroy(platform);
+            _isUpdateInterrupted = true;
         }
     }
 }
