@@ -33,6 +33,13 @@ namespace IM.Analytics
         
         public static void SendEvent(AnalyticsEvent analyticsEvent)
         {
+            if (Instance._analyticsProviders == null)
+            {
+                if (Instance.enableLogs)
+                    Debug.LogWarning($"[AnalyticsManager] nj analytics providers in list for send event {analyticsEvent}");
+                return;
+            }
+            
             foreach (var analyticsProvider in Instance._analyticsProviders)
                 analyticsProvider.SendEvent(analyticsEvent);
         }

@@ -36,8 +36,8 @@ namespace IM.Ads
 
         public void ShowRewardedAd(Action<AdsCallbackStatus> onComplete)
         {
-            Advertisement.Show(RewardedAdId);
             onFinishRewardedVideo = onComplete;
+            Advertisement.Show(RewardedAdId, this);
         }
 
         public void OnInitializationComplete()

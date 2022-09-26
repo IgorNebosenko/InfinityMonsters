@@ -1,4 +1,5 @@
 ﻿using System;
+using IM.Ads;
 using IM.Analytics;
 using IM.Analytics.Events;
 using IM.GameData;
@@ -17,14 +18,37 @@ namespace IM.UI.Game
         public void OnShowAdsPressed()
         {
             AnalyticsManager.SendEvent(new AfterGameEndFlowEvent(true));
-            throw new NotImplementedException();
+            AdsManager.TryShowRewardedAd(RespawnCallback);
         }
 
-        public void OnSurrenderPressed()
+        public void OnRestartPressed()
         {
             AnalyticsManager.SendEvent(new AfterGameEndFlowEvent(false));
             GameStats.Instance.EndGame();
+        }
+
+        public void OnToMenuPressed()
+        {
             SceneManager.LoadScene(0);
+        }
+
+        private void RespawnCallback(AdsCallbackStatus status)
+        {
+            AnalyticsManager.SendEvent(new RewardedAdViewEvent(status != AdsCallbackStatus.NotAvailable, status.ToString()));
+
+            switch (status)
+            {
+                case AdsCallbackStatus.Success:
+                    GameStats.Instance.RespawnPlayer();
+                    break;
+                case AdsCallbackStatus.Skipped:
+                    GameUiReferences.Instance.SkippedRewardedAdPopup.gameObject.SetActive(true);
+                    break;
+                case AdsCallbackStatus.NotAvailable:
+                    GameUiReferences.Instance.ErrorShowAdsPopup.gameObject.SetActive(true);
+                    break;
+            }
+            _popup.gameObject.SetActive(false);
         }
     }
 }

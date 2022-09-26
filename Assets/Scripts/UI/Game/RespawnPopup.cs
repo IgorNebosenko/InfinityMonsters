@@ -8,7 +8,8 @@ namespace IM.UI.Game
     {
         [SerializeField] private GameObject showAdsButtonObject;
         [SerializeField] private Button showAdsButton;
-        [SerializeField] private Button surrenderButton;
+        [SerializeField] private Button restartButton;
+        [SerializeField] private Button toMenuButton;
 
         private RespawnPopupPresenter _presenter;
 
@@ -21,13 +22,15 @@ namespace IM.UI.Game
         {
             showAdsButtonObject.SetActive(GameStats.Instance.CanRespawn);
             showAdsButton.onClick.AddListener(_presenter.OnShowAdsPressed);
-            surrenderButton.onClick.AddListener(_presenter.OnSurrenderPressed);
+            restartButton.onClick.AddListener(_presenter.OnRestartPressed);
+            toMenuButton.onClick.AddListener(_presenter.OnToMenuPressed);
         }
 
         public void OnDisable()
         {
             showAdsButton.onClick.RemoveListener(_presenter.OnShowAdsPressed);
-            surrenderButton.onClick.RemoveListener(_presenter.OnSurrenderPressed);
+            restartButton.onClick.RemoveListener(_presenter.OnRestartPressed);
+            toMenuButton.onClick.RemoveListener(_presenter.OnToMenuPressed);
         }
     }
 }

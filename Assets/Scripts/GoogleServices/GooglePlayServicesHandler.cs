@@ -32,7 +32,14 @@ namespace IM.GoogleServices
 
         private void OnLoadAchievements(IAchievement[] list)
         {
-            _achievements = new List<IAchievement>(list);
+            if (list != null)
+                _achievements = new List<IAchievement>(list);
+            else
+            {
+                if (enableLogs)
+                    Debug.LogWarning("[GooglePlayServicesHandler] list of achievements is empty!");
+                _achievements = new List<IAchievement>();
+            }
         }
 
         public void UpdateHighScore(int value)

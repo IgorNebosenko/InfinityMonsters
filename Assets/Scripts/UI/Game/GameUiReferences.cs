@@ -7,6 +7,8 @@ namespace IM.UI.Game
         public GameView GameView;
         public Joystick Joystick;
         public RespawnPopup RespawnPopup;
+        public SkippedRewardedAdPopup SkippedRewardedAdPopup;
+        public ErrorShowAdsPopup ErrorShowAdsPopup;
         
         public static GameUiReferences Instance { get; private set; }
 

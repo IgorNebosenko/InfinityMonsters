@@ -1,4 +1,5 @@
 using System;
+using IM.Ads;
 using IM.Analytics;
 using IM.Analytics.Events;
 using IM.GoogleServices;
@@ -9,6 +10,7 @@ namespace IM.GameData
     public class GameStats : MonoBehaviour
     {
         public const string HighScorePath = "High Score";
+        private const int CountGamesBetweenAds = 5;
         
         public int HighScore { get; private set; }
         public int CurrentScore { get; private set; }
@@ -23,6 +25,8 @@ namespace IM.GameData
         private AchievementsHandler _achievementsHandler;
 
         public event Action<int> OnScoreChanged;
+        
+        public event Action OnRespawn;
         public event Action OnReset;
 
         private void Awake()
@@ -64,12 +68,22 @@ namespace IM.GameData
             AnalyticsManager.SendEvent(new GameEndEvent(CanRespawn, CurrentScore));
 
             IsGameContinues = false;
-            NumberOfGame++;
+        }
+
+        public void RespawnPlayer()
+        {
+            OnRespawn?.Invoke();
+            StartGame();
         }
 
         public void RestartGame()
         {
             NumberOfGame++;
+
+            if (NumberOfGame > 0 && NumberOfGame % CountGamesBetweenAds == 0)
+                AnalyticsManager.SendEvent(new InterstitialAdViewEvent(AdsManager.TryShowInterstitialAd()));
+
+
             OnReset?.Invoke();
             StartGame();
         }
