@@ -11,12 +11,11 @@ namespace IM.UI.Game
     {
         [SerializeField] private Button button;
         [SerializeField] private TMP_Text buttonText;
-        [Space] 
-        [SerializeField] private string OnHoldedText = "AutoShoot: On";
+        [Space] [SerializeField] private string OnHoldedText = "AutoShoot: On";
         [SerializeField] private string OnHoldTextOff = "AutoShoot: Off";
-        
+
         private bool _isHolded;
-        
+
         public event Action OnHoldButton;
 
         private void Awake()
@@ -50,10 +49,8 @@ namespace IM.UI.Game
 
         private void SetButtonText()
         {
-            if (_isHolded)
-                buttonText.text = OnHoldedText;
-            else
-                buttonText.text = OnHoldTextOff;
+            buttonText.text = _isHolded ? OnHoldedText : OnHoldTextOff;
         }
+
     }
 }

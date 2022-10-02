@@ -11,7 +11,7 @@ namespace IM.GameData
     {
         public const string HighScorePath = "High Score";
         private const int CountGamesBetweenAds = 3;
-        
+
         public int HighScore { get; private set; }
         public int CurrentScore { get; private set; }
 
@@ -25,7 +25,7 @@ namespace IM.GameData
         private AchievementsHandler _achievementsHandler;
 
         public event Action<int> OnScoreChanged;
-        
+
         public event Action OnRespawn;
         public event Action OnReset;
 
@@ -52,7 +52,7 @@ namespace IM.GameData
             StartGame();
         }
 
-        public void RestartGame()
+        public void UpdateHighScore()
         {
             if (CurrentScore > HighScore)
             {
@@ -60,6 +60,11 @@ namespace IM.GameData
                 PlayerPrefs.SetInt(HighScorePath, HighScore);
                 GooglePlayServicesHandler.Instance.UpdateHighScore(HighScore);
             }
+        }
+
+        public void RestartGame()
+        {
+            UpdateHighScore();
             AnalyticsManager.SendEvent(new GameEndEvent(CanRespawn, CurrentScore));
             
             NumberOfGame++;

@@ -31,6 +31,7 @@ namespace IM.UI.Game
 
         public void OnToMenuPressed()
         {
+            GameStats.Instance.UpdateHighScore();
             SceneManager.LoadScene(0);
         }
 

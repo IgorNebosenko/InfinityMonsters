@@ -20,6 +20,7 @@ namespace IM.UI.Game
 
         public void OnToMenuButtonPressed()
         {
+            GameStats.Instance.UpdateHighScore();
             SceneManager.LoadScene(0);
         }
     }
