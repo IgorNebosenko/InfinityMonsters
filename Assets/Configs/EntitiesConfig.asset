@@ -382,6 +382,123 @@ MonoBehaviour:
     minScoreForDestroy: 26
     maxScoreForDestroy: 28
     spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 0.8
+      mass: 17
+    botEntityPrefab: {fileID: 2188945677037283828, guid: 8ad51fa3d941e624f860056739abb286, type: 3}
+    requiredScore: 875
+    weightForSpawn: 5
+    minScoreForDestroy: 26
+    maxScoreForDestroy: 29
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 0.75
+      mass: 18
+    botEntityPrefab: {fileID: 2188945677037283828, guid: 8ad51fa3d941e624f860056739abb286, type: 3}
+    requiredScore: 900
+    weightForSpawn: 5
+    minScoreForDestroy: 27
+    maxScoreForDestroy: 29
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 1.2
+      mass: 13
+    botEntityPrefab: {fileID: 5842725815312515308, guid: 8bfd02fcd94ce8448a46b7b29292458d, type: 3}
+    requiredScore: 915
+    weightForSpawn: 6
+    minScoreForDestroy: 27
+    maxScoreForDestroy: 30
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 1.25
+      mass: 14
+    botEntityPrefab: {fileID: 5842725815312515308, guid: 8bfd02fcd94ce8448a46b7b29292458d, type: 3}
+    requiredScore: 935
+    weightForSpawn: 5
+    minScoreForDestroy: 28
+    maxScoreForDestroy: 30
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 0.6
+      mass: 20
+    botEntityPrefab: {fileID: 15398613354315673, guid: 082afc7dd524e074dbf13f6c134abc6d, type: 3}
+    requiredScore: 950
+    weightForSpawn: 4
+    minScoreForDestroy: 28
+    maxScoreForDestroy: 31
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 0.65
+      mass: 19
+    botEntityPrefab: {fileID: 15398613354315673, guid: 082afc7dd524e074dbf13f6c134abc6d, type: 3}
+    requiredScore: 965
+    weightForSpawn: 5
+    minScoreForDestroy: 29
+    maxScoreForDestroy: 31
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 0.625
+      mass: 19.5
+    botEntityPrefab: {fileID: 15398613354315673, guid: 082afc7dd524e074dbf13f6c134abc6d, type: 3}
+    requiredScore: 980
+    weightForSpawn: 4
+    minScoreForDestroy: 29
+    maxScoreForDestroy: 32
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 1.1
+      mass: 14
+    botEntityPrefab: {fileID: 37267825243193113, guid: 66552648858d91d428621e8002483d8b, type: 3}
+    requiredScore: 1000
+    weightForSpawn: 5
+    minScoreForDestroy: 30
+    maxScoreForDestroy: 32
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 1.05
+      mass: 14.5
+    botEntityPrefab: {fileID: 4552443297664939359, guid: 380e430457fae514aa3a924f1d956692, type: 3}
+    requiredScore: 1010
+    weightForSpawn: 4
+    minScoreForDestroy: 30
+    maxScoreForDestroy: 33
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 1
+      mass: 15
+    botEntityPrefab: {fileID: 2037785317965273005, guid: f92cc2d9b392dcf4783c61443a3a30cd, type: 3}
+    requiredScore: 1025
+    weightForSpawn: 4
+    minScoreForDestroy: 31
+    maxScoreForDestroy: 33
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 1.1
+      mass: 14
+    botEntityPrefab: {fileID: 8849079291738524955, guid: de8e181474a1ed642b30c243f65ca606, type: 3}
+    requiredScore: 1055
+    weightForSpawn: 4
+    minScoreForDestroy: 31
+    maxScoreForDestroy: 34
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 1.25
+      mass: 13
+    botEntityPrefab: {fileID: 2175637633209621464, guid: f0d3db23e281f6c46902c5f9589ca218, type: 3}
+    requiredScore: 1075
+    weightForSpawn: 3
+    minScoreForDestroy: 31
+    maxScoreForDestroy: 34
+    spawnPosition: {x: 2, y: 0.6, z: 2}
+  - entityData:
+      speed: 1.3
+      mass: 12.5
+    botEntityPrefab: {fileID: 3744355392352335297, guid: c9eb7cd51a7f2b443b54d2dba1baedaf, type: 3}
+    requiredScore: 1100
+    weightForSpawn: 3
+    minScoreForDestroy: 32
+    maxScoreForDestroy: 34
+    spawnPosition: {x: 2, y: 0.6, z: 2}
   scoreSpawnBotsData:
   - requiredScore: 0
     countItems: 3
@@ -409,5 +526,5 @@ MonoBehaviour:
     playerEntityPrefab: {fileID: 2609377481242851312, guid: 5b7a7cac11257fb48924b65968f91fe6, type: 3}
     projectileData:
       cooldown: 0.5
-      mass: 5
-      projectileForce: 100
+      mass: 3
+      projectileForce: 75
