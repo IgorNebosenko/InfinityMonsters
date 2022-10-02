@@ -29,6 +29,7 @@ namespace IM.UI.Game
             buttonPause.onClick.AddListener(_controller.OnButtonPauseClicked);
             gameStats.OnScoreChanged += SetScoreText;
             buttonShoot.OnHoldButton += OnButtonShootHolded;
+            gameStats.OnHighScoreUpdated += HighScoreTextUpdate;
         }
 
         private void OnDisable()
@@ -36,11 +37,17 @@ namespace IM.UI.Game
             buttonPause.onClick.AddListener(_controller.OnButtonPauseClicked);
             gameStats.OnScoreChanged -= SetScoreText;
             buttonShoot.OnHoldButton -= OnButtonShootHolded;
+            gameStats.OnHighScoreUpdated -= HighScoreTextUpdate;
         }
 
         private void Start()
         {
-            textHighScore.text = $"Highscore: {GameStats.Instance.HighScore}";
+            HighScoreTextUpdate(GameStats.Instance.HighScore);
+        }
+
+        private void HighScoreTextUpdate(int val)
+        {
+            textHighScore.text = $"Highscore: {val}";
         }
 
         private void SetScoreText(int val)

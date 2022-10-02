@@ -25,6 +25,7 @@ namespace IM.GameData
         private AchievementsHandler _achievementsHandler;
 
         public event Action<int> OnScoreChanged;
+        public event Action<int> OnHighScoreUpdated; 
 
         public event Action OnRespawn;
         public event Action OnReset;
@@ -58,6 +59,7 @@ namespace IM.GameData
             {
                 HighScore = CurrentScore;
                 PlayerPrefs.SetInt(HighScorePath, HighScore);
+                OnHighScoreUpdated?.Invoke(HighScore);
                 GooglePlayServicesHandler.Instance.UpdateHighScore(HighScore);
             }
         }
