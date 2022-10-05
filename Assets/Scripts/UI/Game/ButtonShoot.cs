@@ -10,9 +10,10 @@ namespace IM.UI.Game
     public class ButtonShoot : MonoBehaviour
     {
         [SerializeField] private Button button;
-        [SerializeField] private TMP_Text buttonText;
-        [Space] [SerializeField] private string OnHoldedText = "AutoShoot: On";
-        [SerializeField] private string OnHoldTextOff = "AutoShoot: Off";
+        [SerializeField] private Image imageAimStatus;
+        [Space] 
+        [SerializeField] private Sprite onAimEnabledIcon;
+        [SerializeField] private Sprite onAimDisabledIcon;
 
         private bool _isHolded;
 
@@ -21,7 +22,7 @@ namespace IM.UI.Game
         private void Awake()
         {
             _isHolded = false;
-            SetButtonText();
+            SetButtonState();
         }
 
         private void OnEnable()
@@ -44,12 +45,12 @@ namespace IM.UI.Game
         {
             _isHolded = !_isHolded;
             AnalyticsManager.SendEvent(new GameAimEvent(_isHolded));
-            SetButtonText();
+            SetButtonState();
         }
 
-        private void SetButtonText()
+        private void SetButtonState()
         {
-            buttonText.text = _isHolded ? OnHoldedText : OnHoldTextOff;
+            imageAimStatus.sprite = _isHolded ? onAimEnabledIcon : onAimDisabledIcon;
         }
 
     }
