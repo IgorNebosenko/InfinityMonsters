@@ -18,7 +18,9 @@ namespace IM.UI.Game
         public void OnShowAdsPressed()
         {
             AnalyticsManager.SendEvent(new AfterGameEndFlowEvent(true));
-            AdsManager.TryShowRewardedAd(RespawnCallback);
+            if (!AdsManager.TryShowRewardedAd(RespawnCallback))
+                GameUiReferences.Instance.ErrorShowAdsPopup.gameObject.SetActive(true);
+
             _popup.gameObject.SetActive(false);
         }
 
