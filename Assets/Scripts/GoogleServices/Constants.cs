@@ -24,9 +24,12 @@
 
 public static class Constants
 {
-        public const string achievement_reach_1000_points = "CgkI0tHdg_wSEAIQAg"; // <GPGSID>
-        public const string achievement_reach_10_000_points = "CgkI0tHdg_wSEAIQBA"; // <GPGSID>
         public const string leaderboard_highscores_leaderboard = "CgkI0tHdg_wSEAIQAQ"; // <GPGSID>
+        public const string achievement_reach_100k_points = "CgkI0tHdg_wSEAIQBg"; // <GPGSID>
+        public const string achievement_reach_10_000_points = "CgkI0tHdg_wSEAIQBA"; // <GPGSID>
+        public const string achievement_reach_50k_points = "CgkI0tHdg_wSEAIQBQ"; // <GPGSID>
         public const string achievement_reach_5000_points = "CgkI0tHdg_wSEAIQAw"; // <GPGSID>
+        public const string achievement_reach_1000_points = "CgkI0tHdg_wSEAIQAg"; // <GPGSID>
 
 }
+

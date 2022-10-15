@@ -26,6 +26,12 @@ namespace IM.UI.Menu
             throw new NotImplementedException();
         }
 
+        public void OnButtonAchievementsClicked()
+        {
+            AnalyticsManager.SendEvent(new AchievementsBoardShowEvent());
+            Social.ShowAchievementsUI();
+        }
+
         public void OnButtonLeaderBoardClicked()
         {
             AnalyticsManager.SendEvent(new LeaderboardShowEvent());

@@ -1,6 +1,5 @@
 using IM.GameData;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +11,7 @@ namespace IM.UI.Menu
         [SerializeField] private TMP_Text textVersion;
         [SerializeField] private Button buttonPlay;
         [SerializeField] private Button buttonNoAds;
+        [SerializeField] private Button buttonAchievements;
         [SerializeField] private Button buttonLeaderBoard;
         
         private MenuPresenter _presenter;
@@ -28,6 +28,7 @@ namespace IM.UI.Menu
             
             buttonPlay.onClick.AddListener(_presenter.OnButtonPlayPressed);
             buttonNoAds.onClick.AddListener(_presenter.OnButtonNoAdsPressed);
+            buttonAchievements.onClick.AddListener(_presenter.OnButtonAchievementsClicked);
             buttonLeaderBoard.onClick.AddListener(_presenter.OnButtonLeaderBoardClicked);
         }
 
@@ -35,6 +36,7 @@ namespace IM.UI.Menu
         {
             buttonPlay.onClick.RemoveListener(_presenter.OnButtonPlayPressed);
             buttonNoAds.onClick.RemoveListener(_presenter.OnButtonNoAdsPressed);
+            buttonAchievements.onClick.RemoveListener(_presenter.OnButtonAchievementsClicked);
             buttonLeaderBoard.onClick.RemoveListener(_presenter.OnButtonLeaderBoardClicked);
         }
     }
