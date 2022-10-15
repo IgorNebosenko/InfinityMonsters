@@ -1,5 +1,6 @@
 using IM.GameData;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ namespace IM.UI.Menu
     public class MenuView : MonoBehaviour
     {
         [SerializeField] private TMP_Text textHighScore;
+        [SerializeField] private TMP_Text textVersion;
         [SerializeField] private Button buttonPlay;
         [SerializeField] private Button buttonNoAds;
         [SerializeField] private Button buttonLeaderBoard;
@@ -22,6 +24,7 @@ namespace IM.UI.Menu
         private void OnEnable()
         {
             textHighScore.text = $"High score: {PlayerPrefs.GetInt(GameStats.HighScorePath, 0)}";
+            textVersion.text = $"v. {Application.version}";
             
             buttonPlay.onClick.AddListener(_presenter.OnButtonPlayPressed);
             buttonNoAds.onClick.AddListener(_presenter.OnButtonNoAdsPressed);

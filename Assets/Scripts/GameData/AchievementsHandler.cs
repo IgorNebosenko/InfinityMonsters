@@ -48,6 +48,7 @@ namespace IM.GameData
             {
                 AnalyticsManager.SendEvent(new ReachedAchievementScore(AchievementsScores[index].achievement));
                 Debug.Log($"[AchievementsHandler] player reached achievement: {AchievementsScores[index].achievement}");
+                GooglePlayServicesHandler.Instance.SetAchievement(AchievementsScores[index].achievement);
             }
 
             _lastScore = score;

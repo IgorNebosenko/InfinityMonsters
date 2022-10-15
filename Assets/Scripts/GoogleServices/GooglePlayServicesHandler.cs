@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using GooglePlayGames;
 using IM.Analytics;
@@ -44,7 +43,7 @@ namespace IM.GoogleServices
 
         public void UpdateHighScore(int value)
         {
-            Social.ReportProgress(Constants.leaderboard_highscores_leaderboard, value, result =>
+            Social.ReportScore(value, Constants.leaderboard_highscores_leaderboard, result =>
             {
                 if (enableLogs)
                     Debug.Log($"[GooglePlayServicesHandler] report high score status success: {result}");
@@ -86,6 +85,11 @@ namespace IM.GoogleServices
                 return;
 
             achievement.percentCompleted = 100;
+            Social.ReportProgress(achievement.id, 100f, x =>
+            {
+                if (enableLogs)
+                    Debug.Log($"[GooglePlayServicesHandler] report achievement with id {achievement.id} is {x}");
+            });
             AnalyticsManager.SendEvent(new ReachedAchievementScore(type));
         }
     }
