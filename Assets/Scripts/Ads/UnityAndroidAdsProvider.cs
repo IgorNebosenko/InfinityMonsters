@@ -19,7 +19,7 @@ namespace IM.Ads
         public void Init(bool enableLogs, bool isTestMode)
         {
             _enableLogs = enableLogs;
-            Advertisement.Initialize(ProjectId, isTestMode, this);
+            Advertisement.Initialize(ProjectId, isTestMode, true, this);
             LoadAds();
         }
 
