@@ -55,12 +55,12 @@ namespace IM.GameData
 
         public void UpdateHighScore()
         {
+            GooglePlayServicesHandler.Instance.UpdateHighScore(HighScore);
             if (CurrentScore > HighScore)
             {
                 HighScore = CurrentScore;
                 PlayerPrefs.SetInt(HighScorePath, HighScore);
                 OnHighScoreUpdated?.Invoke(HighScore);
-                GooglePlayServicesHandler.Instance.UpdateHighScore(HighScore);
             }
         }
 
