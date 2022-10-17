@@ -72,6 +72,12 @@ namespace IM.GoogleServices
                 case AchievementType.points10K:
                     achievement = _achievements.Find(x => string.Equals(x.id, Constants.achievement_reach_10_000_points));
                     break;
+                case AchievementType.points50K:
+                    achievement = _achievements.Find(x => string.Equals(x.id, Constants.achievement_reach_50k_points));
+                    break;
+                case AchievementType.points100K:
+                    achievement = _achievements.Find(x => string.Equals(x.id, Constants.achievement_reach_100k_points));
+                    break;
             }
 
             if (achievement == null)
@@ -81,10 +87,6 @@ namespace IM.GoogleServices
                 return;
             }
             
-            if (achievement.completed)
-                return;
-
-            achievement.percentCompleted = 100;
             Social.ReportProgress(achievement.id, 100f, x =>
             {
                 if (enableLogs)

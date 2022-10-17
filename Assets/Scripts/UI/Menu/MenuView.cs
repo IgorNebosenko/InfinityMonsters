@@ -13,7 +13,7 @@ namespace IM.UI.Menu
         [SerializeField] private Button buttonNoAds;
         [SerializeField] private Button buttonAchievements;
         [SerializeField] private Button buttonLeaderBoard;
-        
+
         private MenuPresenter _presenter;
 
         private void Awake()

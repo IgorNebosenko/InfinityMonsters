@@ -8,14 +8,16 @@ namespace IM.GameData
 {
     public class AchievementsHandler
     {
-        private int _lastScore;
+        private int _lastIndex = -1;
         private GameStats _stats;
 
         private static readonly List<(int score, AchievementType achievement)> AchievementsScores = new List<(int score, AchievementType achievement)>
         {
             (1000, AchievementType.points1K),
             (5000, AchievementType.points5K),
-            (10000, AchievementType.points10K)
+            (10000, AchievementType.points10K),
+            (50000, AchievementType.points50K),
+            (100000, AchievementType.points100K)
         };
 
         public AchievementsHandler(GameStats stats)
@@ -34,29 +36,21 @@ namespace IM.GameData
 
         private void OnScoreChanged(int score)
         {
-            var index = -1;
-            
-            for (var i = 0; i < AchievementsScores.Count; i++)
-            {
-                if (AchievementsScores[i].score <= score)
-                    index = i;
-                else
-                    break;
-            }
+            if (_lastIndex == AchievementsScores.Count)
+                return;
 
-            if (index >= 0 && AchievementsScores[index].score > _lastScore)
+            if (score > AchievementsScores[_lastIndex + 1].score)
             {
-                AnalyticsManager.SendEvent(new ReachedAchievementScore(AchievementsScores[index].achievement));
-                Debug.Log($"[AchievementsHandler] player reached achievement: {AchievementsScores[index].achievement}");
-                GooglePlayServicesHandler.Instance.SetAchievement(AchievementsScores[index].achievement);
+                ++_lastIndex;
+                AnalyticsManager.SendEvent(new ReachedAchievementScore(AchievementsScores[_lastIndex].achievement));
+                Debug.Log($"[AchievementsHandler] player reached achievement: {AchievementsScores[_lastIndex].achievement}");
+                GooglePlayServicesHandler.Instance.SetAchievement(AchievementsScores[_lastIndex].achievement);
             }
-
-            _lastScore = score;
         }
 
         private void OnReset()
         {
-            _lastScore = 0;
+            _lastIndex = -1;
         }
     }
 }
