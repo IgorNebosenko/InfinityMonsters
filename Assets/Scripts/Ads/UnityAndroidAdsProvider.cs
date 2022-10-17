@@ -19,7 +19,7 @@ namespace IM.Ads
         public void Init(bool enableLogs, bool isTestMode)
         {
             _enableLogs = enableLogs;
-            Advertisement.Initialize(ProjectId, isTestMode, true, this);
+            Advertisement.Initialize(ProjectId, isTestMode, this);
             LoadAds();
         }
 
@@ -38,7 +38,6 @@ namespace IM.Ads
         {
             onFinishRewardedVideo = onComplete;
             Advertisement.Show(RewardedAdId, this);
-            Advertisement.IsReady();
         }
 
         public void OnInitializationComplete()
@@ -107,6 +106,7 @@ namespace IM.Ads
                         break;
                 }
 
+                Advertisement.Load(RewardedAdId, this);
                 onFinishRewardedVideo = null;
             }
         }
