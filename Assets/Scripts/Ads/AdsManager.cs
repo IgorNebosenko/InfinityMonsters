@@ -37,7 +37,7 @@ namespace IM.Ads
 
         public static bool TryShowInterstitialAd()
         {
-            var providers = Instance._adsProviders.Where(x => x.IsAvailable && x.IsReady).ToArray();
+            var providers = Instance._adsProviders.Where(x => x.IsAvailable).ToArray();
             if (providers.Length == 0)
                 return false;
             
@@ -47,7 +47,7 @@ namespace IM.Ads
 
         public static bool TryShowRewardedAd(Action<AdsCallbackStatus> onComplete)
         {
-            var providers = Instance._adsProviders.Where(x => x.IsAvailable && x.IsReady).ToArray();
+            var providers = Instance._adsProviders.Where(x => x.IsAvailable).ToArray();
             if (providers.Length == 0)
                 return false;
             

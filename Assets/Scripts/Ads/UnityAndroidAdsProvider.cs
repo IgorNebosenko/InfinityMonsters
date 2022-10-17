@@ -15,7 +15,6 @@ namespace IM.Ads
         private Action<AdsCallbackStatus> onFinishRewardedVideo;
         
         public bool IsAvailable { get; private set; }
-        public bool IsReady => Advertisement.IsReady();
 
         public void Init(bool enableLogs, bool isTestMode)
         {
