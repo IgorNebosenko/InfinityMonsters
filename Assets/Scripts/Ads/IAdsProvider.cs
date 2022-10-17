@@ -13,6 +13,7 @@ namespace IM.Ads
     public interface IAdsProvider
     {
         bool IsAvailable { get; }
+        bool IsReady { get; }
 
         void Init(bool enableLogs, bool isTestMode);
         
