@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5326068759033412027}
   - component: {fileID: 5326068759033412026}
   - component: {fileID: 5326068759033412021}
+  - component: {fileID: 8984485125209992542}
   m_Layer: 0
   m_Name: AbobusImpTemplate
   m_TagString: Untagged
@@ -129,6 +130,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicModel: {fileID: 5326068759033412026}
+--- !u!114 &8984485125209992542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326068759033412020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2b292c68e446b805775138d5ddc9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorsMaterials:
+  - {fileID: 2100000, guid: 332b3044daa944f4ba9883b8411d589e, type: 2}
+  - {fileID: 2100000, guid: 7665deaef7b0b904ebcd1db52ad8adb7, type: 2}
+  - {fileID: 2100000, guid: 9f7716bb781eacc4581cbeae430ad8fb, type: 2}
+  - {fileID: 2100000, guid: 4acef04247438304e9f6edfed5de450c, type: 2}
+  - {fileID: 2100000, guid: f4e8d39a9992c9c4e96912a44658aee6, type: 2}
+  - {fileID: 2100000, guid: c78688862399d7f409d85feb581991a8, type: 2}
+  - {fileID: 2100000, guid: a21a18d4d99386947be1584069a740cf, type: 2}
+  - {fileID: 2100000, guid: 2722fed6c27d0a044b3bfc9556c14d1e, type: 2}
+  - {fileID: 2100000, guid: 8f790f69e55251842bd8233bbadb5fcf, type: 2}
+  - {fileID: 2100000, guid: 0b015a249f914d74aa12a3829dc35e70, type: 2}
+  - {fileID: 2100000, guid: b2d502abc76e7e2409640957cedd7d37, type: 2}
+  - {fileID: 2100000, guid: 2a6a79672f394d042bdfdfec823ee7ac, type: 2}
+  abobusMaterial: {fileID: 5326068759033412024}
 --- !u!1 &5326068759382407952
 GameObject:
   m_ObjectHideFlags: 0

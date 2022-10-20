@@ -7,5 +7,7 @@ namespace IM.Configs
     {
         public float speed;
         public float mass;
+
+        public int scoreForDestroy;
     }
 }
