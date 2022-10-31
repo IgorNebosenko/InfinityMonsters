@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace IM.Ads
 {
-    public class AdsManager : MonoBehaviour
+    public class AdsManager
     {
-        [SerializeField] private bool enableLogs;
-        [SerializeField] private bool testMode;
+        private bool _enableLogs;
+        private bool _testMode;
         
         private List<IAdsProvider> _adsProviders;
-        private static AdsManager Instance;
 
-        private void Awake()
+        public AdsManager(bool enableLogs, bool testMode)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-
+            _enableLogs = enableLogs;
+            _testMode = testMode;
+            
             InitializeAdsProviders();
         }
-
+        
         private void InitializeAdsProviders()
         {
             _adsProviders = new List<IAdsProvider>();
@@ -31,13 +29,13 @@ namespace IM.Ads
             #endif
 
             foreach (var adsProvider in _adsProviders)
-                adsProvider.Init(enableLogs, testMode);
+                adsProvider.Init(_enableLogs, _testMode);
             
         }
 
-        public static bool TryShowInterstitialAd()
+        public bool TryShowInterstitialAd()
         {
-            var providers = Instance._adsProviders.Where(x => x.IsAvailable).ToArray();
+            var providers = _adsProviders.Where(x => x.IsAvailable).ToArray();
             if (providers.Length == 0)
                 return false;
             
@@ -45,9 +43,9 @@ namespace IM.Ads
             return true;
         }
 
-        public static bool TryShowRewardedAd(Action<AdsCallbackStatus> onComplete)
+        public bool TryShowRewardedAd(Action<AdsCallbackStatus> onComplete)
         {
-            var providers = Instance._adsProviders.Where(x => x.IsAvailable).ToArray();
+            var providers = _adsProviders.Where(x => x.IsAvailable).ToArray();
             if (providers.Length == 0)
                 return false;
             

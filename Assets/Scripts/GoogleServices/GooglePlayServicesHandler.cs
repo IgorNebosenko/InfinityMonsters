@@ -4,22 +4,22 @@ using IM.Analytics;
 using IM.Analytics.Events;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using Zenject;
 
 namespace IM.GoogleServices
 {
-    public class GooglePlayServicesHandler : MonoBehaviour
+    public class GooglePlayServicesHandler
     {
-        [SerializeField] private bool enableLogs = true;
-
+        private bool _enableLogs;
         private List<IAchievement> _achievements;
-        public static GooglePlayServicesHandler Instance { get; private set; }
-        
-        private void Awake()
+
+        [Inject] private AnalyticsManager _analyticsManager;
+
+        public GooglePlayServicesHandler(bool enableLogs)
         {
-            DontDestroyOnLoad(this);
-            Instance = this;
+            _enableLogs = enableLogs;
             
-            PlayGamesPlatform.DebugLogEnabled = true;
+            PlayGamesPlatform.DebugLogEnabled = _enableLogs;
             PlayGamesPlatform.Activate();
             Social.localUser.Authenticate(result =>
             {
@@ -35,7 +35,7 @@ namespace IM.GoogleServices
                 _achievements = new List<IAchievement>(list);
             else
             {
-                if (enableLogs)
+                if (_enableLogs)
                     Debug.LogWarning("[GooglePlayServicesHandler] list of achievements is empty!");
                 _achievements = new List<IAchievement>();
             }
@@ -45,7 +45,7 @@ namespace IM.GoogleServices
         {
             Social.ReportScore(value, Constants.leaderboard_highscores_leaderboard, result =>
             {
-                if (enableLogs)
+                if (_enableLogs)
                     Debug.Log($"[GooglePlayServicesHandler] report high score status success: {result}");
             });
         }
@@ -54,7 +54,7 @@ namespace IM.GoogleServices
         {
             if (_achievements == null || _achievements.Count == 0)
             {
-                if (enableLogs)
+                if (_enableLogs)
                     Debug.LogWarning("[GooglePlayServicesHandler] Can't set achievement, list achievements is empty!");
                 return;
             }
@@ -82,17 +82,17 @@ namespace IM.GoogleServices
 
             if (achievement == null)
             {
-                if (enableLogs)
+                if (_enableLogs)
                     Debug.LogWarning($"[GooglePlayServicesHandler] can't find achievement for type {type}!");
                 return;
             }
             
             Social.ReportProgress(achievement.id, 100f, x =>
             {
-                if (enableLogs)
+                if (_enableLogs)
                     Debug.Log($"[GooglePlayServicesHandler] report achievement with id {achievement.id} is {x}");
             });
-            AnalyticsManager.SendEvent(new ReachedAchievementScore(type));
+            _analyticsManager.SendEvent(new ReachedAchievementScore(type));
         }
     }
 }

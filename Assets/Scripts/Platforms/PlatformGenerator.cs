@@ -3,6 +3,7 @@ using System.Collections;
 using IM.Configs;
 using IM.GameData;
 using UnityEngine;
+using Zenject;
 
 namespace IM.Platforms
 {
@@ -14,6 +15,9 @@ namespace IM.Platforms
 
         private float _lastPositionZ;
         private Coroutine _process;
+
+        [Inject] private IGameEvents _gameEvents;
+        [Inject] private IInGameProperties _gameProperties;
 
         public event Action<Vector3> OnPlatformSpawned;
         public float PlatformSize => (distanceBetweenPlatforms - 0.5f) / 2;
@@ -28,14 +32,14 @@ namespace IM.Platforms
 
         private void OnEnable()
         {
-            GameStats.Instance.OnReset += GameReset;
-            GameStats.Instance.OnRespawn += PlayerRespawn;
+            _gameEvents.OnReset += GameReset;
+            _gameEvents.OnRespawn += PlayerRespawn;
         }
         
         private void OnDisable()
         {
-            GameStats.Instance.OnReset -= GameReset;
-            GameStats.Instance.OnRespawn -= PlayerRespawn;
+            _gameEvents.OnReset -= GameReset;
+            _gameEvents.OnRespawn -= PlayerRespawn;
         }
 
         private void SpawnPlatform()
@@ -48,7 +52,7 @@ namespace IM.Platforms
 
         private IEnumerator PlatformSpawnProcess()
         {
-            while (GameStats.Instance.IsGameContinues)
+            while (_gameProperties.IsGameContinues)
             {
                 yield return new WaitForSeconds(platformSpawnTime);
                 SpawnPlatform();

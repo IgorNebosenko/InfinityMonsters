@@ -4,6 +4,7 @@ using IM.Configs;
 using IM.GameData;
 using IM.Platforms;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace IM.Boosts
@@ -17,6 +18,9 @@ namespace IM.Boosts
         private List<BoostBase> _listNewBoosts;
         private List<BoostBase> _listOldBoosts;
 
+        [Inject] private IGameEvents _gameEvents;
+        [Inject] private IHighScoreData _scoreData;
+
         private void Awake()
         {
             _listNewBoosts = new List<BoostBase>();
@@ -26,13 +30,13 @@ namespace IM.Boosts
         private void OnEnable()
         {
             platformGenerator.OnPlatformSpawned += SpawnBoosts;
-            GameStats.Instance.OnReset += DestroyAllBoosts;
+            _gameEvents.OnReset += DestroyAllBoosts;
         }
 
         private void OnDisable()
         {
             platformGenerator.OnPlatformSpawned -= SpawnBoosts;
-            GameStats.Instance.OnReset -= DestroyAllBoosts;
+            _gameEvents.OnReset -= DestroyAllBoosts;
         }
 
         private void SpawnBoosts(Vector3 position)
@@ -46,7 +50,7 @@ namespace IM.Boosts
             _listOldBoosts.AddRange(_listNewBoosts);
             _listNewBoosts.Clear();
 
-            var listBoostsGen = boostConfig.GetListBoosts(GameStats.Instance.CurrentScore);
+            var listBoostsGen = boostConfig.GetListBoosts(_scoreData.CurrentScore);
 
             for (var i = 0; i < listBoostsGen.Count; i++)
             {

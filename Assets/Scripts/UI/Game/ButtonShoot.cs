@@ -4,6 +4,7 @@ using IM.Analytics.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace IM.UI.Game
 {
@@ -14,6 +15,8 @@ namespace IM.UI.Game
         [Space] 
         [SerializeField] private Sprite onAimEnabledIcon;
         [SerializeField] private Sprite onAimDisabledIcon;
+
+        [Inject] private AnalyticsManager _analyticsManager;
 
         private bool _isHolded;
 
@@ -44,7 +47,7 @@ namespace IM.UI.Game
         private void ButtonHoldStatusChange()
         {
             _isHolded = !_isHolded;
-            AnalyticsManager.SendEvent(new GameAimEvent(_isHolded));
+            _analyticsManager.SendEvent(new GameAimEvent(_isHolded));
             SetButtonState();
         }
 

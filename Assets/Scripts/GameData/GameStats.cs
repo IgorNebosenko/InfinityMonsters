@@ -7,10 +7,14 @@ using UnityEngine;
 
 namespace IM.GameData
 {
-    public class GameStats : MonoBehaviour
+    public class GameStats : IHighScoreData, IInGameProperties, IGameEvents, IGameCore
     {
         public const string HighScorePath = "High Score";
         private const int CountGamesBetweenAds = 3;
+
+        private AdsManager _adsManager;
+        private GooglePlayServicesHandler _playServices;
+        private AnalyticsManager _analyticsManager;
 
         public int HighScore { get; private set; }
         public int CurrentScore { get; private set; }
@@ -18,9 +22,7 @@ namespace IM.GameData
         public bool IsGameContinues { get; private set; } = true;
         public bool CanRespawn { get; private set; } = true;
 
-        public static int NumberOfGame = 1;
-
-        public static GameStats Instance { get; private set; }
+        private static int NumberOfGame = 1;
 
         private AchievementsHandler _achievementsHandler;
 
@@ -30,11 +32,14 @@ namespace IM.GameData
         public event Action OnRespawn;
         public event Action OnReset;
 
-        private void Awake()
+        public GameStats(AdsManager adsManager, GooglePlayServicesHandler playServices, AnalyticsManager analyticsManager)
         {
-            Instance = this;
+            _adsManager = adsManager;
+            _playServices = playServices;
+            _analyticsManager = analyticsManager;
+            
             HighScore = PlayerPrefs.GetInt(HighScorePath, 0);
-            _achievementsHandler = new AchievementsHandler(this);
+            _achievementsHandler = new AchievementsHandler(this, playServices, analyticsManager);
 
             Time.timeScale = 1;
         }
@@ -42,7 +47,7 @@ namespace IM.GameData
         public void StartGame()
         {
             IsGameContinues = true;
-            AnalyticsManager.SendEvent(new PlayerStartGameEvent(NumberOfGame));
+            _analyticsManager.SendEvent(new PlayerStartGameEvent(NumberOfGame));
         }
 
         public void RespawnPlayer()
@@ -55,7 +60,7 @@ namespace IM.GameData
 
         public void UpdateHighScore()
         {
-            GooglePlayServicesHandler.Instance.UpdateHighScore(HighScore);
+            _playServices.UpdateHighScore(HighScore);
             if (CurrentScore > HighScore)
             {
                 HighScore = CurrentScore;
@@ -67,15 +72,14 @@ namespace IM.GameData
         public void RestartGame()
         {
             UpdateHighScore();
-            AnalyticsManager.SendEvent(new GameEndEvent(CanRespawn, CurrentScore));
+            _analyticsManager.SendEvent(new GameEndEvent(CanRespawn, CurrentScore));
             
             NumberOfGame++;
             Time.timeScale = 1;
 
             if (NumberOfGame % CountGamesBetweenAds == 0)
-            {
-                AnalyticsManager.SendEvent(new InterstitialAdViewEvent(AdsManager.TryShowInterstitialAd()));
-            }
+                _analyticsManager.SendEvent(new InterstitialAdViewEvent(_adsManager.TryShowInterstitialAd()));
+            
 
             CurrentScore = 0;
             OnScoreChanged?.Invoke(0);

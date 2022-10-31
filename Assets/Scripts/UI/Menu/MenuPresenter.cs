@@ -3,12 +3,14 @@ using IM.Analytics;
 using IM.Analytics.Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace IM.UI.Menu
 {
     public class MenuPresenter
     {
         private MenuView _view;
+        [Inject] private AnalyticsManager _analyticsManager;
 
         public MenuPresenter(MenuView view)
         {
@@ -22,19 +24,19 @@ namespace IM.UI.Menu
 
         public void OnButtonNoAdsPressed()
         {
-            AnalyticsManager.SendEvent(new NoAdsButtonEvent(false)); //ToDo implement it!
+            _analyticsManager.SendEvent(new NoAdsButtonEvent(false)); //ToDo implement it!
             throw new NotImplementedException();
         }
 
         public void OnButtonAchievementsClicked()
         {
-            AnalyticsManager.SendEvent(new AchievementsBoardShowEvent());
+            _analyticsManager.SendEvent(new AchievementsBoardShowEvent());
             Social.ShowAchievementsUI();
         }
 
         public void OnButtonLeaderBoardClicked()
         {
-            AnalyticsManager.SendEvent(new LeaderboardShowEvent());
+            _analyticsManager.SendEvent(new LeaderboardShowEvent());
             Social.ShowLeaderboardUI();
         }
     }

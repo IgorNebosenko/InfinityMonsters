@@ -1,6 +1,7 @@
 ﻿using IM.GameData;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace IM.UI.Game
 {
@@ -12,6 +13,7 @@ namespace IM.UI.Game
         [SerializeField] private Button toMenuButton;
 
         private RespawnPopupPresenter _presenter;
+        [Inject] private IInGameProperties _gameProperties;
 
         private void Awake()
         {
@@ -20,7 +22,7 @@ namespace IM.UI.Game
 
         private void OnEnable()
         {
-            showAdsButtonObject.SetActive(GameStats.Instance.CanRespawn);
+            showAdsButtonObject.SetActive(_gameProperties.CanRespawn);
             showAdsButton.onClick.AddListener(_presenter.OnShowAdsPressed);
             restartButton.onClick.AddListener(_presenter.OnRestartPressed);
             toMenuButton.onClick.AddListener(_presenter.OnToMenuPressed);

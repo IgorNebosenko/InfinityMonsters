@@ -1,5 +1,6 @@
 ﻿using IM.GameData;
 using UnityEngine;
+using Zenject;
 
 namespace IM.Platforms
 {
@@ -11,16 +12,25 @@ namespace IM.Platforms
 
         private bool _isUpdateInterrupted;
 
+        private IGameEvents _gameEvents;
+
+        [Inject]
+        public void Construct(IGameEvents gameEvents)
+        {
+            _gameEvents = gameEvents;
+            Debug.Log("[DEV] Construct");
+        }
+
         private void OnEnable()
         {
-            GameStats.Instance.OnRespawn += ForceDestroy;
-            GameStats.Instance.OnReset += ForceDestroy;
+            _gameEvents.OnRespawn += ForceDestroy;
+            _gameEvents.OnReset += ForceDestroy;
         }
 
         private void OnDisable()
         {
-            GameStats.Instance.OnRespawn -= ForceDestroy;
-            GameStats.Instance.OnReset -= ForceDestroy;
+            _gameEvents.OnRespawn -= ForceDestroy;
+            _gameEvents.OnReset -= ForceDestroy;
         }
 
         private void Update()

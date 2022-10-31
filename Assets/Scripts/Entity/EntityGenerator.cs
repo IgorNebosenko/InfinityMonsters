@@ -3,6 +3,7 @@ using IM.Configs;
 using IM.GameData;
 using IM.Platforms;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace IM.Entity
@@ -16,6 +17,9 @@ namespace IM.Entity
 
         private PlayerEntity _player;
         private Vector3 _lastPosition;
+
+        [Inject] private IGameEvents _gameEvents;
+        [Inject] private IHighScoreData _highScoreData;
 
         private static readonly Vector3 HeightModifierPlayer = new Vector3(0f, 0.6f, 0f);
 
@@ -37,22 +41,22 @@ namespace IM.Entity
         {
             platformGenerator.OnPlatformSpawned += GenerateBots;
 
-            GameStats.Instance.OnRespawn += PlayerRespawn;
-            GameStats.Instance.OnReset += GameRestart;
+            _gameEvents.OnRespawn += PlayerRespawn;
+            _gameEvents.OnReset += GameRestart;
         }
 
         private void OnDisable()
         {
             platformGenerator.OnPlatformSpawned += GenerateBots;
             
-            GameStats.Instance.OnRespawn -= PlayerRespawn;
-            GameStats.Instance.OnReset -= GameRestart;
+            _gameEvents.OnRespawn -= PlayerRespawn;
+            _gameEvents.OnReset -= GameRestart;
         }
 
         private void GenerateBots(Vector3 position)
         {
             _lastPosition = position;
-            var config = entitiesConfig.GetBotsDataForSpawn(GameStats.Instance.CurrentScore);
+            var config = entitiesConfig.GetBotsDataForSpawn(_highScoreData.CurrentScore);
 
             for (var i = 0; i < config.Length; i++)
             {

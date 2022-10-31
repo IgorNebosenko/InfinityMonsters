@@ -1,4 +1,5 @@
 ﻿using IM.GameData;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace IM.Entity
@@ -7,16 +8,19 @@ namespace IM.Entity
     {
         private int _scoreForDestroy;
 
+        [Inject] private IGameEvents _gameEvents;
+        [Inject] private IGameCore _gameCore;
+
         private void OnEnable()
         {
-            GameStats.Instance.OnReset += DestroyBot;
-            GameStats.Instance.OnRespawn += DestroyBot;
+            _gameEvents.OnReset += DestroyBot;
+            _gameEvents.OnRespawn += DestroyBot;
         }
 
         private void OnDisable()
         {
-            GameStats.Instance.OnReset -= DestroyBot;
-            GameStats.Instance.OnRespawn -= DestroyBot;
+            _gameEvents.OnReset -= DestroyBot;
+            _gameEvents.OnRespawn -= DestroyBot;
         }
 
         public void SetScoreForDestroy(int minVal, int maxVal)
@@ -26,7 +30,7 @@ namespace IM.Entity
 
         public override void Death()
         {
-            GameStats.Instance.UpdateCurrentScore(_scoreForDestroy);
+            _gameCore.UpdateCurrentScore(_scoreForDestroy);
             DestroyBot();
         }
 

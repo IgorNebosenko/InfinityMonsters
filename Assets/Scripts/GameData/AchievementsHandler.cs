@@ -9,7 +9,12 @@ namespace IM.GameData
     public class AchievementsHandler
     {
         private int _lastIndex = -1;
-        private GameStats _stats;
+
+        private IGameEvents _gameEvents;
+        private GooglePlayServicesHandler _playServices;
+        private AnalyticsManager _analyticsManager;
+ 
+        //private IGameStats _stats;
 
         private static readonly List<(int score, AchievementType achievement)> AchievementsScores = new List<(int score, AchievementType achievement)>
         {
@@ -20,18 +25,20 @@ namespace IM.GameData
             (100000, AchievementType.points100K)
         };
 
-        public AchievementsHandler(GameStats stats)
+        public AchievementsHandler(IGameEvents gameEvents, GooglePlayServicesHandler playServices, AnalyticsManager analyticsManager)
         {
-            _stats = stats;
+            _gameEvents = gameEvents;
+            _playServices = playServices;
+            _analyticsManager = analyticsManager;
 
-            _stats.OnScoreChanged += OnScoreChanged;
-            _stats.OnReset += OnReset;
+            _gameEvents.OnScoreChanged += OnScoreChanged;
+            _gameEvents.OnReset += OnReset;
         }
 
         ~AchievementsHandler()
         {
-            _stats.OnScoreChanged -= OnScoreChanged;
-            _stats.OnReset -= OnReset;
+            _gameEvents.OnScoreChanged -= OnScoreChanged;
+            _gameEvents.OnReset -= OnReset;
         }
 
         private void OnScoreChanged(int score)
@@ -42,9 +49,9 @@ namespace IM.GameData
             if (score > AchievementsScores[_lastIndex + 1].score)
             {
                 ++_lastIndex;
-                AnalyticsManager.SendEvent(new ReachedAchievementScore(AchievementsScores[_lastIndex].achievement));
+                _analyticsManager.SendEvent(new ReachedAchievementScore(AchievementsScores[_lastIndex].achievement));
                 Debug.Log($"[AchievementsHandler] player reached achievement: {AchievementsScores[_lastIndex].achievement}");
-                GooglePlayServicesHandler.Instance.SetAchievement(AchievementsScores[_lastIndex].achievement);
+                _playServices.SetAchievement(AchievementsScores[_lastIndex].achievement);
             }
         }
 

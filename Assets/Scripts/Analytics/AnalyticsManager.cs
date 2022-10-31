@@ -4,43 +4,35 @@ using UnityEngine;
 
 namespace IM.Analytics
 {
-    public class AnalyticsManager : MonoBehaviour
+    public class AnalyticsManager
     {
-        [SerializeField] private bool enableLogs;
+        private bool _enableLogs;
         
         private List<IAnalyticsProvider> _analyticsProviders;
-        private static AnalyticsManager Instance;
 
-        private void Awake()
+        public AnalyticsManager(bool enableLogs)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            
-            InitializeAnalyticsProviders();
-        }
-
-        private void InitializeAnalyticsProviders()
-        {
+            _enableLogs = enableLogs;
             _analyticsProviders = new List<IAnalyticsProvider>();
             
-            #if UNITY_ANDROID
+#if UNITY_ANDROID
             _analyticsProviders.Add(new FirebaseAnalyticsProvider());
-            #endif
+#endif
 
             foreach (var analyticsProvider in _analyticsProviders)
-                analyticsProvider.Init(enableLogs);
+                analyticsProvider.Init(_enableLogs);
         }
-        
-        public static void SendEvent(AnalyticsEvent analyticsEvent)
+
+        public void SendEvent(AnalyticsEvent analyticsEvent)
         {
-            if (Instance._analyticsProviders == null)
+            if (_analyticsProviders == null)
             {
-                if (Instance.enableLogs)
-                    Debug.LogWarning($"[AnalyticsManager] nj analytics providers in list for send event {analyticsEvent}");
+                if (_enableLogs)
+                    Debug.LogWarning($"[AnalyticsManager] no analytics providers in list for send event {analyticsEvent}");
                 return;
             }
             
-            foreach (var analyticsProvider in Instance._analyticsProviders)
+            foreach (var analyticsProvider in _analyticsProviders)
                 analyticsProvider.SendEvent(analyticsEvent);
         }
     }

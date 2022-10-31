@@ -3,6 +3,7 @@ using IM.GameData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace IM.UI.Game
 {
@@ -13,7 +14,8 @@ namespace IM.UI.Game
         [SerializeField] private Button buttonPause;
         [SerializeField] private ButtonShoot buttonShoot;
 
-        [SerializeField] private GameStats gameStats;
+        [Inject] private IGameEvents _gameEvents;
+        [Inject] private IHighScoreData _highScoreData;
         
         private GameViewController _controller;
 
@@ -27,22 +29,22 @@ namespace IM.UI.Game
         private void OnEnable()
         {
             buttonPause.onClick.AddListener(_controller.OnButtonPauseClicked);
-            gameStats.OnScoreChanged += SetScoreText;
+            _gameEvents.OnScoreChanged += SetScoreText;
             buttonShoot.OnHoldButton += OnButtonShootHolded;
-            gameStats.OnHighScoreUpdated += HighScoreTextUpdate;
+            _gameEvents.OnHighScoreUpdated += HighScoreTextUpdate;
         }
 
         private void OnDisable()
         {
             buttonPause.onClick.AddListener(_controller.OnButtonPauseClicked);
-            gameStats.OnScoreChanged -= SetScoreText;
+            _gameEvents.OnScoreChanged -= SetScoreText;
             buttonShoot.OnHoldButton -= OnButtonShootHolded;
-            gameStats.OnHighScoreUpdated -= HighScoreTextUpdate;
+            _gameEvents.OnHighScoreUpdated -= HighScoreTextUpdate;
         }
 
         private void Start()
         {
-            HighScoreTextUpdate(GameStats.Instance.HighScore);
+            HighScoreTextUpdate(_highScoreData.HighScore);
         }
 
         private void HighScoreTextUpdate(int val)

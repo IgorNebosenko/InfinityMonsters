@@ -1,11 +1,14 @@
 ﻿using IM.GameData;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace IM.UI.Game
 {
     public class ErrorShowAdsPresenter
     {
         private ErrorShowAdsPopup _popup;
+
+        [Inject] private IGameCore _gameCore;
         
         public ErrorShowAdsPresenter(ErrorShowAdsPopup popup)
         {
@@ -14,13 +17,13 @@ namespace IM.UI.Game
         
         public void OnRestartButtonPressed()
         {
-            GameStats.Instance.RestartGame();
+            _gameCore.RestartGame();
             _popup.gameObject.SetActive(false);
         }
 
         public void OnToMenuButtonPressed()
         {
-            GameStats.Instance.UpdateHighScore();
+            _gameCore.UpdateHighScore();
             SceneManager.LoadScene(0);
         }
     }
