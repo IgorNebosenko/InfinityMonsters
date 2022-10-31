@@ -1,7 +1,9 @@
+using IM.Analytics;
 using IM.GameData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace IM.UI.Menu
 {
@@ -16,9 +18,10 @@ namespace IM.UI.Menu
 
         private MenuPresenter _presenter;
 
-        private void Awake()
+        [Inject]
+        public void Construct(IAnalyticsManager analyticsManager)
         {
-            _presenter = new MenuPresenter(this);
+            _presenter = new MenuPresenter(analyticsManager,this);
         }
 
         private void OnEnable()

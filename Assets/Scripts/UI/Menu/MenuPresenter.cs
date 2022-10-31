@@ -3,17 +3,17 @@ using IM.Analytics;
 using IM.Analytics.Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace IM.UI.Menu
 {
     public class MenuPresenter
     {
         private MenuView _view;
-        [Inject] private IAnalyticsManager _analyticsManager;
+        private IAnalyticsManager _analyticsManager;
 
-        public MenuPresenter(MenuView view)
+        public MenuPresenter(IAnalyticsManager analyticsManager, MenuView view)
         {
+            _analyticsManager = analyticsManager;
             _view = view;
         }
 
