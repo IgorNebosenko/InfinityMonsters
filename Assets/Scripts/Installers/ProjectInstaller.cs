@@ -16,8 +16,13 @@ namespace IM.Installers
             Application.targetFrameRate = 30;
             
             Container.Bind<AdsManager>().AsSingle().WithArguments(enableLogs, false);
+            Container.Bind<IAdsManager>().To<AdsManager>().FromResolve();
+            
             Container.Bind<GooglePlayServicesHandler>().AsSingle().WithArguments(enableLogs);
+            Container.Bind<IGooglePlayGameServices>().To<GooglePlayServicesHandler>().FromResolve();
+            
             Container.Bind<AnalyticsManager>().AsSingle().WithArguments(enableLogs);
+            Container.Bind<IAnalyticsManager>().To<AnalyticsManager>().FromResolve();
 
             Container.Bind<GameStats>().AsSingle();
             Container.Bind<IHighScoreData>().To<GameStats>().FromResolve();

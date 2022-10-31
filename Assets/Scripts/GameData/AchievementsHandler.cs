@@ -11,8 +11,8 @@ namespace IM.GameData
         private int _lastIndex = -1;
 
         private IGameEvents _gameEvents;
-        private GooglePlayServicesHandler _playServices;
-        private AnalyticsManager _analyticsManager;
+        private IGooglePlayGameServices _playServices;
+        private IAnalyticsManager _analyticsManager;
  
         //private IGameStats _stats;
 
@@ -25,7 +25,7 @@ namespace IM.GameData
             (100000, AchievementType.points100K)
         };
 
-        public AchievementsHandler(IGameEvents gameEvents, GooglePlayServicesHandler playServices, AnalyticsManager analyticsManager)
+        public AchievementsHandler(IGameEvents gameEvents, IGooglePlayGameServices playServices, IAnalyticsManager analyticsManager)
         {
             _gameEvents = gameEvents;
             _playServices = playServices;

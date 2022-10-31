@@ -12,9 +12,9 @@ namespace IM.GameData
         public const string HighScorePath = "High Score";
         private const int CountGamesBetweenAds = 3;
 
-        private AdsManager _adsManager;
-        private GooglePlayServicesHandler _playServices;
-        private AnalyticsManager _analyticsManager;
+        private IAdsManager _adsManager;
+        private IGooglePlayGameServices _playServices;
+        private IAnalyticsManager _analyticsManager;
 
         public int HighScore { get; private set; }
         public int CurrentScore { get; private set; }
@@ -32,7 +32,7 @@ namespace IM.GameData
         public event Action OnRespawn;
         public event Action OnReset;
 
-        public GameStats(AdsManager adsManager, GooglePlayServicesHandler playServices, AnalyticsManager analyticsManager)
+        public GameStats(IAdsManager adsManager, IGooglePlayGameServices playServices, IAnalyticsManager analyticsManager)
         {
             _adsManager = adsManager;
             _playServices = playServices;

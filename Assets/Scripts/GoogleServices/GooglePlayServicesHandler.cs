@@ -8,12 +8,12 @@ using Zenject;
 
 namespace IM.GoogleServices
 {
-    public class GooglePlayServicesHandler
+    public class GooglePlayServicesHandler : IGooglePlayGameServices
     {
         private bool _enableLogs;
         private List<IAchievement> _achievements;
 
-        [Inject] private AnalyticsManager _analyticsManager;
+        [Inject] private IAnalyticsManager _analyticsManager;
 
         public GooglePlayServicesHandler(bool enableLogs)
         {

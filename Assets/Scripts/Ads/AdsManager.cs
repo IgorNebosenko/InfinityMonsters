@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace IM.Ads
 {
-    public class AdsManager
+    public class AdsManager : IAdsManager
     {
         private bool _enableLogs;
         private bool _testMode;

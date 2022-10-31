@@ -11,7 +11,7 @@ namespace IM.Boosts
         [SerializeField] private PlayerEntity player;
         
         
-        [Inject] private AnalyticsManager _analyticsManager;
+        [Inject] private IAnalyticsManager _analyticsManager;
 
         private void OnTriggerEnter(Collider other)
         {

@@ -10,7 +10,7 @@ namespace IM.UI.Game
         private GameView _view;
         private bool _isPauseActive;
 
-        [Inject] private AnalyticsManager _analyticsManager;
+        [Inject] private IAnalyticsManager _analyticsManager;
 
         public GameViewController(GameView view)
         {

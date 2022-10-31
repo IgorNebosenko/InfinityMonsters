@@ -10,7 +10,7 @@ namespace IM.UI.Menu
     public class MenuPresenter
     {
         private MenuView _view;
-        [Inject] private AnalyticsManager _analyticsManager;
+        [Inject] private IAnalyticsManager _analyticsManager;
 
         public MenuPresenter(MenuView view)
         {

@@ -11,8 +11,8 @@ namespace IM.UI.Game
     {
         private RespawnPopup _popup;
         
-        [Inject] private AdsManager _adsManager;
-        [Inject] private AnalyticsManager _analyticsManager;
+        [Inject] private IAdsManager _adsManager;
+        [Inject] private IAnalyticsManager _analyticsManager;
         [Inject] private IGameCore _gameCore;
         
         public RespawnPopupPresenter(RespawnPopup popup)

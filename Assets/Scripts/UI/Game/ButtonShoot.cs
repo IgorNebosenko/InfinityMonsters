@@ -16,7 +16,7 @@ namespace IM.UI.Game
         [SerializeField] private Sprite onAimEnabledIcon;
         [SerializeField] private Sprite onAimDisabledIcon;
 
-        [Inject] private AnalyticsManager _analyticsManager;
+        [Inject] private IAnalyticsManager _analyticsManager;
 
         private bool _isHolded;
 

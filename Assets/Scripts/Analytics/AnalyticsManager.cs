@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace IM.Analytics
 {
-    public class AnalyticsManager
+    public class AnalyticsManager : IAnalyticsManager
     {
         private bool _enableLogs;
         
