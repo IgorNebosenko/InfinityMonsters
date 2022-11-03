@@ -12,8 +12,8 @@ namespace IM.Platforms
         [Inject] private PlatformToken.Factory _factory;
         private List<PlatformToken> _tokens = new List<PlatformToken>();
 
-        [SerializeField] private float platformSpawnTime = 8f;
-        [SerializeField] private float distanceBetweenPlatforms = 5f;
+        [SerializeField] private float platformSpawnTime = 5f;
+        [SerializeField] private float distanceBetweenPlatforms = 10f;
 
         private float _lastPositionZ;
         private Coroutine _process;

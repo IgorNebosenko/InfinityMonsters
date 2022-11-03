@@ -18,6 +18,7 @@ namespace IM.Platforms
             _platformController = _platformControllerFactory.Create();
             
             _platformController.SetPosition(pos);
+            _platformController.PlatformLifeEnded += OnDespawned;
         }
         
         public void OnDespawned()
