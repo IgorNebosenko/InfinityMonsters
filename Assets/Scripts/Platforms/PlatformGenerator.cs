@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using IM.Configs;
+using System.Collections.Generic;
 using IM.GameData;
 using UnityEngine;
 using Zenject;
@@ -9,15 +9,34 @@ namespace IM.Platforms
 {
     public class PlatformGenerator : MonoBehaviour
     {
+        [Inject] private PlatformToken.Factory _factory;
+        private List<PlatformToken> _tokens = new List<PlatformToken>();
+
         [SerializeField] private float platformSpawnTime = 8f;
         [SerializeField] private float distanceBetweenPlatforms = 5f;
-        [SerializeField] private Platform templateInstance;
 
         private float _lastPositionZ;
         private Coroutine _process;
 
         [Inject] private IGameEvents _gameEvents;
         [Inject] private IInGameProperties _gameProperties;
+
+        private PlatformToken GetPlatformToken(Vector3 pos)
+        {
+            var token = _factory.Create(pos);
+            if (!_tokens.Contains(token))
+                _tokens.Add(token);
+
+            return token;
+        }
+
+        private void DisposeTokens()
+        {
+            for (var i = 0; i < _tokens.Count; i++)
+            {
+                _tokens[i]?.Dispose();
+            }
+        }
 
         public event Action<Vector3> OnPlatformSpawned;
         public float PlatformSize => (distanceBetweenPlatforms - 0.5f) / 2;
@@ -45,7 +64,7 @@ namespace IM.Platforms
         private void SpawnPlatform()
         {
             var pos = Vector3.forward * _lastPositionZ;
-            Instantiate(templateInstance, pos, Quaternion.identity, transform);
+            GetPlatformToken(pos);
             OnPlatformSpawned?.Invoke(pos);
             _lastPositionZ += distanceBetweenPlatforms;
         }
@@ -63,6 +82,7 @@ namespace IM.Platforms
         {
             StopCoroutine(_process);
             _process = null;
+            DisposeTokens();
             Start();
         }
 
