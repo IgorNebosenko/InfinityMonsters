@@ -21,7 +21,7 @@ namespace IM.Boosts
             throw new NotImplementedException();
         }
         
-        public class Factory : PlaceholderFactory<BoostPoolData, BoostToken>
+        public class Factory : PlaceholderFactory<BoostPoolData, BoostController>
         {
         }
     }
