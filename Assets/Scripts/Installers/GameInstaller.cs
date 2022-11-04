@@ -1,3 +1,4 @@
+using IM.Boosts;
 using IM.Configs;
 using IM.Platforms;
 using UnityEngine;
@@ -25,12 +26,20 @@ namespace IM.Installers
             Container.BindFactory<PlatformController, PlatformController.Factory>()
                 .FromMonoPoolableMemoryPool(x => x
                     .WithInitialSize(poolsConfigs.platformsInitialPoolSize)
-                    .FromComponentInNewPrefabResource("Platforms/Platform")
+                    .FromComponentInNewPrefabResource("Templates/Platform")
                     .UnderTransformGroup("Platforms"));
         }
 
         private void BindBoostsPool()
         {
+            Container.BindFactory<BoostPoolData, BoostToken, BoostToken.Factory>()
+                .FromPoolableMemoryPool(x =>
+                    x.WithInitialSize(poolsConfigs.boostsInitialPoolSize));
+            Container.BindFactory<BoostPoolData, BoostController, BoostController.Factory>()
+                .FromMonoPoolableMemoryPool(x => x
+                    .WithInitialSize(poolsConfigs.boostsInitialPoolSize)
+                    .FromComponentInNewPrefabResource("Templates/Boost")
+                    .UnderTransformGroup("Boosts"));
         }
 
         private void BindBulletsPool()
