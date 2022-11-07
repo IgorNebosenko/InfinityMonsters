@@ -4,24 +4,31 @@ using Zenject;
 
 namespace IM.Boosts
 {
-    public class BoostController : MonoBehaviour, IPoolable<BoostPoolData, IMemoryPool>, IDisposable
+    public class BoostController : MonoBehaviour, IPoolable<IMemoryPool>, IDisposable
     {
-        public void OnSpawned(BoostPoolData data, IMemoryPool pool)
+
+        public void OnSpawned(IMemoryPool pool)
         {
-            throw new NotImplementedException();
         }
         
         public void OnDespawned()
         {
-            throw new NotImplementedException();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
+        }
+
+        public BoostController SetPosition(Vector3 pos)
+        {
+            transform.position = pos;
+            return this;
         }
         
-        public class Factory : PlaceholderFactory<BoostPoolData, BoostController>
+        
+        
+        public class Factory : PlaceholderFactory<BoostController>
         {
         }
     }

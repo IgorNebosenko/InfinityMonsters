@@ -32,10 +32,10 @@ namespace IM.Installers
 
         private void BindBoostsPool()
         {
-            Container.BindFactory<BoostPoolData, BoostToken, BoostToken.Factory>()
+            Container.BindFactory<string, Vector3, BoostToken, BoostToken.Factory>()
                 .FromPoolableMemoryPool(x =>
                     x.WithInitialSize(poolsConfigs.boostsInitialPoolSize));
-            Container.BindFactory<BoostPoolData, BoostController, BoostController.Factory>()
+            Container.BindFactory<BoostController, BoostController.Factory>()
                 .FromMonoPoolableMemoryPool(x => x
                     .WithInitialSize(poolsConfigs.boostsInitialPoolSize)
                     .FromComponentInNewPrefabResource("Templates/Boost")

@@ -1,11 +1,12 @@
 ﻿using System;
+using UnityEngine;
 using Zenject;
 
 namespace IM.Boosts
 {
-    public class BoostToken : IPoolable<BoostPoolData, IMemoryPool>, IDisposable
+    public class BoostToken : IPoolable<string, Vector3, IMemoryPool>, IDisposable
     {
-        public void OnSpawned(BoostPoolData data, IMemoryPool pool)
+        public void OnSpawned(string path, Vector3 pos, IMemoryPool pool)
         {
             throw new NotImplementedException();
         }
@@ -20,7 +21,7 @@ namespace IM.Boosts
             throw new NotImplementedException();
         }
 
-        public class Factory : PlaceholderFactory<BoostPoolData, BoostToken>
+        public class Factory : PlaceholderFactory<string, Vector3, BoostToken>
         {
         }
     }
