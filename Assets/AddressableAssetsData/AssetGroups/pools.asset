@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: enemies
+  m_Name: pools
   m_EditorClassIdentifier: 
-  m_GroupName: enemies
+  m_GroupName: pools
   m_Data:
     m_SerializedData: []
-  m_GUID: d9d73d5f4d1e9764792c96a19260297e
-  m_SerializeEntries: []
+  m_GUID: c1e6d354ccc238b479d01e50825115cb
+  m_SerializeEntries:
+  - m_GUID: bf382cf51e184644581925059e70f148
+    m_Address: pool/boosts_container
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 610146fe445470a4789193fd78703667, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 34ed5740b5a5e5440a23122f0d2cdfe8, type: 2}
-    - {fileID: 11400000, guid: b80ef187664ce634c88b19823a9a1017, type: 2}
+    - {fileID: 11400000, guid: d23edd7ede780234c9459307171188c2, type: 2}
+    - {fileID: 11400000, guid: 26eabad788e33934f91b96b655932234, type: 2}

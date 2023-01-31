@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using IM.Addressabless.Pool;
 using IM.Configs;
 using IM.GameData;
 using IM.Platforms;
@@ -20,8 +21,9 @@ namespace IM.Boosts
 
         [Inject] private IGameEvents _gameEvents;
         [Inject] private IHighScoreData _scoreData;
+        [Inject] private AddressablePool<BoostBase, BoostBase.Reference> _boostsPool;
 
-        private void Awake()
+        private async void Awake()
         {
             _listNewBoosts = new List<BoostBase>();
             _listOldBoosts = new List<BoostBase>();
@@ -37,6 +39,11 @@ namespace IM.Boosts
         {
             platformGenerator.OnPlatformSpawned -= SpawnBoosts;
             _gameEvents.OnReset -= DestroyAllBoosts;
+        }
+
+        private async void RegisterTask()
+        {
+            
         }
 
         private void SpawnBoosts(Vector3 position)

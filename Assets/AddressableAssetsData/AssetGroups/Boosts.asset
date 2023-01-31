@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Boosts
+  m_Name: boosts
   m_EditorClassIdentifier: 
-  m_GroupName: Boosts
+  m_GroupName: boosts
   m_Data:
     m_SerializedData: []
   m_GUID: b71b3ce165ea6794ead16089b355e07c
@@ -20,43 +20,53 @@ MonoBehaviour:
   - m_GUID: 5c58e668b406cc64482de609c1f6ca66
     m_Address: boosts/less_cooldown
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: 68940464871b0734dacdd85bb861cdf3
     m_Address: boosts/less_player_force
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: 4d801f4bab2cfc04487d95aec46a52a0
     m_Address: boosts/less_player_mass
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: c5e0214d8c2fa6240a1a1152cf983035
     m_Address: boosts/less_projectile_force
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: 48c4f390926062243ac517e66190da3f
     m_Address: boosts/less_projectile_mass
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: 39ad8c43f1c86494fa83578804028f37
     m_Address: boosts/more_cooldown
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: 512a11bcea1ac0f428d8740640308c83
     m_Address: boosts/more_player_force
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: 495fcc1b01a5205438c996652143d7c5
     m_Address: boosts/more_player_mass
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: 7fae9d9cfa0460844802d06d89c51c5b
     m_Address: boosts/more_projectile_force
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   - m_GUID: d11b15774fdae1c46b545beaa15af1fc
     m_Address: boosts/more_projectile_mass
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - boost
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 610146fe445470a4789193fd78703667, type: 2}
   m_SchemaSet:
