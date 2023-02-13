@@ -35,8 +35,8 @@ namespace IM.UI.Menu
             buttonAchievements.onClick.AddListener(_presenter.OnButtonAchievementsClicked);
             buttonLeaderBoard.onClick.AddListener(_presenter.OnButtonLeaderBoardClicked);
 
-            buttonSound.onClick.AddListener (() => _presenter.ChangeMusicState(SetSoundButtonText));
-            buttonMusic.onClick.AddListener(() => _presenter.ChangeSoundState(SetMusicButtonText));
+            buttonSound.onClick.AddListener (() => _presenter.ChangeSoundState(SetSoundButtonText));
+            buttonMusic.onClick.AddListener(() => _presenter.ChangeMusicState(SetMusicButtonText));
         }
 
         private void OnDisable()
