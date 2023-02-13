@@ -37,5 +37,16 @@ namespace IM.UI.Menu
             AnalyticsManager.SendEvent(new LeaderboardShowEvent());
             Social.ShowLeaderboardUI();
         }
+
+       
+        public void ChangeMusicState(Action<bool> callback)
+        {
+            callback?.Invoke(false);
+            
+        }
+        public void ChangeSoundState(Action<bool> callback)
+        {
+            callback?.Invoke(false);
+        }
     }
 }
