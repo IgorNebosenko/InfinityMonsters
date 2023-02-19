@@ -22,7 +22,7 @@ namespace IM.UI.Menu
 
         private void Awake()
         {
-            _presenter = new MenuPresenter(this);
+            _presenter = new MenuPresenter();
         }
 
         private void OnEnable()

@@ -21,6 +21,10 @@ namespace IM.UI.Menu
             IsMusicPlay = PlayerPrefs.GetInt(musicState, 1) == 0 ? false : true;
         }
 
+        public void OnButtonPlayPressed()
+        {
+            SceneManager.LoadScene(1);
+        }
         public void OnButtonNoAdsPressed()
         {
             AnalyticsManager.SendEvent(new NoAdsButtonEvent(false)); //ToDo implement it!
