@@ -8,16 +8,17 @@ namespace IM.UI.Menu
 {
     public class MenuPresenter
     {
-        private MenuView _view;
+        private const string soundState = "sound_state";
+        private const string musicState = "music_state";
 
-        public MenuPresenter(MenuView view)
-        {
-            _view = view;
-        }
+        public bool IsSoundPlay { get; private set; }
+        public bool IsMusicPlay { get; private set; }
 
-        public void OnButtonPlayPressed()
+        public MenuPresenter()
         {
             SceneManager.LoadScene(1);
+            IsSoundPlay = PlayerPrefs.GetInt(soundState, 1) == 0 ? false : true;
+            IsMusicPlay = PlayerPrefs.GetInt(musicState, 1) == 0 ? false : true;
         }
 
         public void OnButtonNoAdsPressed()
@@ -41,12 +42,14 @@ namespace IM.UI.Menu
        
         public void ChangeMusicState(Action<bool> callback)
         {
-            callback?.Invoke(false);
+            IsMusicPlay = !IsMusicPlay;
+            callback?.Invoke(IsMusicPlay);
             
         }
         public void ChangeSoundState(Action<bool> callback)
         {
-            callback?.Invoke(false);
+            IsSoundPlay = !IsSoundPlay;
+            callback?.Invoke(IsSoundPlay);
         }
     }
 }
