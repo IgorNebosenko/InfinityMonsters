@@ -47,12 +47,14 @@ namespace IM.UI.Menu
         public void ChangeMusicState(Action<bool> callback)
         {
             IsMusicPlay = !IsMusicPlay;
+            PlayerPrefs.SetInt(soundState, IsMusicPlay ? 1 : 0);
             callback?.Invoke(IsMusicPlay);
             
         }
         public void ChangeSoundState(Action<bool> callback)
         {
             IsSoundPlay = !IsSoundPlay;
+            PlayerPrefs.SetInt(soundState, IsSoundPlay ? 1 : 0);
             callback?.Invoke(IsSoundPlay);
         }
     }
