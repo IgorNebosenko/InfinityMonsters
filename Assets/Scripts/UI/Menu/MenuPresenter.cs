@@ -17,8 +17,8 @@ namespace IM.UI.Menu
         public MenuPresenter()
         {
             SceneManager.LoadScene(1);
-            IsSoundPlay = PlayerPrefs.GetInt(soundState, 1) == 0 ? false : true;
-            IsMusicPlay = PlayerPrefs.GetInt(musicState, 1) == 0 ? false : true;
+            IsSoundPlay = PlayerPrefs.GetInt(soundState, 1) != 0 ? false : true;
+            IsMusicPlay = PlayerPrefs.GetInt(musicState, 1) != 0 ? false : true;
         }
 
         public void OnButtonPlayPressed()
