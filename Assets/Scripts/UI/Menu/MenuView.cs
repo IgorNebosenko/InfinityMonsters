@@ -56,7 +56,7 @@ namespace IM.UI.Menu
         }
         private void SetSoundButtonText(bool state)
         {
-            soundButtonText.text = state ? "Music on" : "Music off";
+            soundButtonText.text = state ? "Sound on" : "Sound off";
         }
     }
 }

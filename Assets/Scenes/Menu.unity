@@ -1274,8 +1274,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1572,8 +1572,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1971,14 +1971,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textHighScore: {fileID: 20537155}
   textVersion: {fileID: 38645690}
-  soundButtonText: {fileID: 0}
-  musicButtonText: {fileID: 0}
+  soundButtonText: {fileID: 1115590449}
+  musicButtonText: {fileID: 1345872449}
   buttonPlay: {fileID: 1202088312}
   buttonNoAds: {fileID: 943946124}
   buttonAchievements: {fileID: 2131884709}
   buttonLeaderBoard: {fileID: 523883821}
-  buttonSound: {fileID: 0}
-  buttonMusic: {fileID: 0}
+  buttonSound: {fileID: 1721501789}
+  buttonMusic: {fileID: 1564146901}
 --- !u!114 &1935085078
 MonoBehaviour:
   m_ObjectHideFlags: 0
