@@ -15,13 +15,12 @@ namespace IM.Configs
 
         public BotsData[] GetBotsDataForSpawn(int currentScore)
         {
+            
             var countEnemies = 0;
-
             for (var i = 0; i < scoreSpawnBotsData.Length; i++)
             {
                 if (scoreSpawnBotsData[i].requiredScore > currentScore)
                     break;
-
                 countEnemies = scoreSpawnBotsData[i].countItems;
             }
 
@@ -30,7 +29,7 @@ namespace IM.Configs
 
             var botsResultData = new BotsData[countEnemies];
 
-            var listPossibleBots = botsData.Where(x => x.requiredScore <= currentScore).ToArray();
+            var listPossibleBots = botsData.Where(x => x.requiredScore <= currentScore &&( x.requiredScore <= 0 || x.minScoreForDestroy < currentScore)).ToArray();
 
             for (var i = 0; i < countEnemies; i++)
             {
