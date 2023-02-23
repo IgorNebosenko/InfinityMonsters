@@ -10,14 +10,15 @@ namespace IM.Configs
         public EntityData entityData;
         public BotEntity botEntityPrefab;
 
+        public float health;
+
         public int requiredScore;
+        public int maxScoreForGenerate;
+        
         public float weightForSpawn;
 
         public int minScoreForDestroy;
         public int maxScoreForDestroy;
-
-        public int score;
-        public float health;
 
         [HideInInspector]
         public Vector3 spawnPosition;
