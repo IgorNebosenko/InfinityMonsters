@@ -11,9 +11,10 @@ namespace IM.Configs
         public BotEntity botEntityPrefab;
 
         public float health;
+
+        public int requiredScore;
         public int maxScoreForGenerate;
         
-        public int requiredScore;
         public float weightForSpawn;
 
         public int minScoreForDestroy;
