@@ -8,36 +8,53 @@ namespace IM.UI.Menu
 {
     public class MenuPresenter
     {
-        private MenuView _view;
-        private IAnalyticsManager _analyticsManager;
+        private const string soundState = "sound_state";
+        private const string musicState = "music_state";
 
-        public MenuPresenter(IAnalyticsManager analyticsManager, MenuView view)
+        public bool IsSoundPlay { get; private set; }
+        public bool IsMusicPlay { get; private set; }
+
+        public MenuPresenter()
         {
-            _analyticsManager = analyticsManager;
-            _view = view;
+            IsMusicPlay = PlayerPrefs.GetInt(musicState, 1) != 0;
+            IsSoundPlay = PlayerPrefs.GetInt(soundState, 1) != 0;
         }
 
         public void OnButtonPlayPressed()
         {
             SceneManager.LoadScene(1);
         }
-
         public void OnButtonNoAdsPressed()
         {
-            _analyticsManager.SendEvent(new NoAdsButtonEvent(false)); //ToDo implement it!
+            AnalyticsManager.SendEvent(new NoAdsButtonEvent(false)); //ToDo implement it!
             throw new NotImplementedException();
         }
 
         public void OnButtonAchievementsClicked()
         {
-            _analyticsManager.SendEvent(new AchievementsBoardShowEvent());
+            AnalyticsManager.SendEvent(new AchievementsBoardShowEvent());
             Social.ShowAchievementsUI();
         }
 
         public void OnButtonLeaderBoardClicked()
         {
-            _analyticsManager.SendEvent(new LeaderboardShowEvent());
+            AnalyticsManager.SendEvent(new LeaderboardShowEvent());
             Social.ShowLeaderboardUI();
+        }
+
+       
+        public void ChangeMusicState(Action<bool> callback)
+        {
+            IsMusicPlay = !IsMusicPlay;
+            PlayerPrefs.SetInt(soundState, IsMusicPlay ? 1 : 0);
+            callback?.Invoke(IsMusicPlay);
+            
+        }
+        public void ChangeSoundState(Action<bool> callback)
+        {
+            IsSoundPlay = !IsSoundPlay;
+            PlayerPrefs.SetInt(soundState, IsSoundPlay ? 1 : 0);
+            callback?.Invoke(IsSoundPlay);
         }
     }
 }
