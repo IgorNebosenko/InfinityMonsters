@@ -16,6 +16,9 @@ namespace IM.Configs
         public int minScoreForDestroy;
         public int maxScoreForDestroy;
 
+        public int score;
+        public float health;
+
         [HideInInspector]
         public Vector3 spawnPosition;
     }
